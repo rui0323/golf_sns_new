@@ -80,6 +80,10 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     date (3.3.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.11.0)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -104,8 +108,10 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.1)
     minitest (5.16.3)
     msgpack (1.6.0)
+    mysql2 (0.5.5)
     net-imap (0.3.2)
       date
       net-protocol
@@ -116,11 +122,11 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.13.10-x86_64-linux)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     public_suffix (5.0.1)
-    puma (5.6.5)
-      nio4r (~> 2.0)
+    puma (3.12.6)
     racc (1.6.1)
     rack (2.2.4)
     rack-mini-profiler (2.3.4)
@@ -185,7 +191,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.5.4-x86_64-linux)
+    sqlite3 (1.5.4)
+      mini_portile2 (~> 2.8.0)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.1)
@@ -222,9 +229,14 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  dotenv-rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  puma (~> 5.0)
+  mysql2
+  net-imap
+  net-pop
+  net-smtp
+  puma (~> 3.11)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7)
   sass-rails (>= 6)
