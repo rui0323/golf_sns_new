@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 }
 
 namespace :admin do
-resources :customers, only: [:index, :show] 
+resources :customers, only: [:index, :show]
+resources :posts, only: [:index, :show, :edit, :create, :new, :update]
 end
 
 
