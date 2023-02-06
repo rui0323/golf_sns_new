@@ -1,31 +1,31 @@
 
-<div class="col-md-8 offset-md-1">
-<h2>会員詳細画面</h2>
+<div class="container mt-5 mb-5">
+   <div class="row my-3">
+    <div class="col-sm-8 px-sm-0 offset-sm-5">
+     <h2>会員詳細画面</h2>
 
- <div>
- <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
- <%= link_to "一覧画面へ",customers_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+     <div>
+      <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+      <%= link_to "一覧画面へ",customers_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
 
- <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
-  <button type="button" class="btn btn-light" style="width:110px;">ログアウト</button>
-  <% end %>
- </div>
+      <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
+      <button type="button" class="btn btn-light" style="width:110px;">ログアウト</button>
+      <% end %>
+     </div>
 
 
-  	<div class="row">
-	  <div class="offset-sm-4 col-sm-4">
-	    <table class="table table-borderless table-hover">
-	      <tr class="brown-border">
-		    	<td>氏名</td>
+     <div>
+		   <td>氏名</td>
 					<td>
 					<%= @customer.name %>
-
-                    </td>
-
-                   <tr class="brown-border">
-                    <td>メールアドレス</td>
-                    <td><%= @customer.email %></td>
-                   </tr>
-
+     </td>
+     </div>
+     <div>
+     <tr class="brown-border">
+     <td>メールアドレス</td>
+     <td><%= @customer.email %></td>
+     </tr>
      </div>
      </div>
+     </div>
+ </div>

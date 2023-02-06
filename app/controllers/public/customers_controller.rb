@@ -12,6 +12,16 @@ class Public::CustomersController < ApplicationController
      @customer = Customer.find(params[:id])
   end
 
+  def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      flash[:success] = "会員情報が正常に保存されました"
+      redirect_to customer_path(@customer)
+    else
+      render 'edit'
+    end
+  end
+
  def unsubscribe
  end
 

@@ -1,3 +1,4 @@
+<div class="main-container col-7 pt-5 offset-5">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -19,8 +20,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "btn btn-outline-danger mx-auto my-1" %>
+    <%= render "public/shared/links", class: "btn btn-outline-danger mx-auto my-1" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+
+</div>
