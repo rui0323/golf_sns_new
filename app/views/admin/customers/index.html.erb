@@ -24,7 +24,7 @@
           <tr>
             <td><%#= image_tag user.get_profile_image(100,100) %></td>
             <td><%= customer.name %></td>
-            <td><%= link_to"詳細ページへ",customer_path(customer.id) %></td>
+            <td><%= link_to"詳細ページへ",admin_customer_path(customer.id) %></td>
           </tr>
           <% end%>
           </tbody>

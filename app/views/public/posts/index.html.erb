@@ -1,1 +1,12 @@
-post index
+<% @posts.each do |post| %>
+<div>
+  <%= image_tag post.get_image %>
+  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
+  <p>タイトル：<%= post.title %></p>
+  <p>説明：<%= post.caption %></p>
+  <p>ユーザーネーム：<%= post.customer.name %></p>
+</div>
+<% end %>
+
+
+index
