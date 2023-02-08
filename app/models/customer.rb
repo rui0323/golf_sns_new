@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
   has_one_attached :image
   has_many :post_comments, dependent: :destroy
   has_many :customers, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
     def get_profile_image
     if image.attached?

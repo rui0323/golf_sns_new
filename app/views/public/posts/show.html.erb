@@ -32,16 +32,31 @@
        <p><%= image_tag post_comment.customer.get_profile_image %></p>
        <%= post_comment.customer.name %>
        <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+       <% if post_comment.customer == current_customer %>
+       <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
        <% end %>
+       <% end %>
+
+        <% if @post.favorited_by?(current_customer) %>
+        <p>
+        <%= link_to post_favorites_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %> いいね
+         <% end %>
+        </p>
+        <% else %>
+        <p>
+        <%= link_to post_favorites_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %> いいね
+        <% end %>
+    </p>
+  <% end %>
+
        </div>
        <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
         <%= f.submit "送信する" %>
         <% end %>
-</div>
-
-
-
+     </div>
    </div>
  </div>

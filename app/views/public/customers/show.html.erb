@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
    <div class="col-4 mt-5 pt-5">
-     <h2>会員詳細画面</h2>
+     <h2>	<%= @customer.name %>詳細画面</h2>
 
        <div>
         <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
         <%= link_to "一覧画面へ",customers_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
-        <%= link_to "投稿画面へ", new_post_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+      
        </div>
      </div>
 

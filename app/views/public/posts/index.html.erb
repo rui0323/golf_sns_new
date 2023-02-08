@@ -8,6 +8,8 @@
     　<th>タイトル</th>
     　<th>説明</th>
     　<th>詳細</th>
+    　<th>コメント件数</th>
+       <th>いいね</th>
      </tr>
   　</thead>
 
@@ -28,10 +30,27 @@
      <th><%= post.title %></th>
      <th><%= post.caption %></th>
      <th><%= link_to"詳細ページへ",post_path(post.id) %></th>
+      <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
+     <th>
+        <% if post.favorited_by?(current_customer) %>
+        <p>
+        <%= link_to posts_path(post), method: :delete do %>
+        ♥<%= post.favorites.count %> いいね
+         <% end %>
+        </p>
+        <% else %>
+        <p>
+        <%= link_to posts_path(post), method: :post do %>
+        ♡<%= post.favorites.count %> いいね
+        <% end %>
+       </p>
+        <% end %>
+        </th>
      </tr>
+
+
 
      <% end %>
     </tbody>
    </table>
-
 </div>
