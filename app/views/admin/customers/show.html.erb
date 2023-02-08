@@ -15,10 +15,24 @@
 		     <td>氏名</td>
 		     <td><%= @customer.name %></td>
        </tr>
-       
+
       <tr>
        <td>メールアドレス</td>
        <td><%= @customer.email %></td>
+      </tr>
+
+       <tr>
+          <td>自己紹介</td>
+          <td><%= @customer.body %></td>
+         </tr>
+
+      <tr>
+       <td>アイコン</td>
+      <td><% if @customer.image.attached? %>
+          <%= image_tag @customer.image, size: "100x100" %>
+          <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+          <% end %></td>
       </tr>
      </table>
      </div>

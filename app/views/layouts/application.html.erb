@@ -23,6 +23,9 @@
               <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-danger" %>
               <%= link_to "TOP", root_path, class: "btn btn-outline-danger" %>
               <%#= link_to"マイページ",customer_path(@customer), class: "btn btn-outline-danger" %>
+              <%= link_to "会員一覧",customers_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+              <%= link_to "投稿画面へ", new_post_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+              <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-danger" %>
               <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
               <button type="button" class="btn btn-outline-danger" style="width:110px;">ログアウト</button>
               <% end %>

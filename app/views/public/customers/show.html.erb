@@ -7,39 +7,36 @@
         <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
         <%= link_to "一覧画面へ",customers_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
         <%= link_to "投稿画面へ", new_post_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
-
-
        </div>
      </div>
 
      <div class="col-6 mt-5 pt-5">
        <table class="table table-borderless">
          <tr>
-		       <td>氏名</td>
-					    <td>	<%= @customer.name %></td>
+		        <td>氏名</td>
+					     <td>	<%= @customer.name %></td>
          </tr>
 
          <tr>
-       　<td>メールアドレス</td>
-         <td><%= @customer.email %></td>
+        　 <td>メールアドレス</td>
+          <td><%= @customer.email %></td>
          </tr>
 
          <tr>
-          <td>自己紹介</td>
-          <td><%= @customer.body %></td>
+           <td>自己紹介</td>
+           <td><%= @customer.body %></td>
          </tr>
 
          <tr>
-          <td>アイコン</td>
-          <td><% if @customer.image.attached? %>
-          <%= image_tag @customer.image, size: "100x100" %>
-          <% else %>
-          <%= image_tag 'no_image', size: "100x100" %>
-          <% end %></td>
+           <td>アイコン</td>
+           <td><% if @customer.image.attached? %>
+           <%= image_tag @customer.image, size: "100x100" %>
+           <% else %>
+           <%= image_tag 'no_image', size: "100x100" %>
+           <% end %></td>
          </tr>
-
 
          </table>
-         </div>
+      </div>
    </div>
  </div>

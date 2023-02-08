@@ -1,12 +1,37 @@
-<% @posts.each do |post| %>
-<div>
-  <%= image_tag post.get_image %>
-  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
-  <p>タイトル：<%= post.title %></p>
-  <p>説明：<%= post.caption %></p>
-  <p>ユーザーネーム：<%= post.customer.name %></p>
+ <div class="container  px-8 px-sm-8">
+　<p><span class="bg-lightsecondary">投稿一覧</span>
+ 　<table class="table ">
+ 　 <thead>
+   　<tr>
+  　　<th>ユーザーネーム</th>
+    　<th>投稿ユーザー画像</th>
+    　<th>タイトル</th>
+    　<th>説明</th>
+    　<th>詳細</th>
+     </tr>
+  　</thead>
+
+  　<tbody>
+     <% @posts.each do |post| %>
+
+     <tr>
+      <th>
+     <%= post.customer.name %></th>
+
+     <th>
+     <% if post.image.attached? %>
+     <%= image_tag post.image, size: "50x50" %>
+     <% else %>
+     <%= image_tag 'no_image', size: "50x50" %>
+     <% end %></th>
+
+     <th><%= post.title %></th>
+     <th><%= post.caption %></th>
+     <th><%= link_to"詳細ページへ",post_path(post.id) %></th>
+     </tr>
+
+     <% end %>
+    </tbody>
+   </table>
+
 </div>
-<% end %>
-
-
-index

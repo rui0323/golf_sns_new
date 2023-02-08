@@ -17,7 +17,9 @@ end
 scope module: :public do
 root "homes#top"
 resources :customers, only: [:show, :update, :edit, :index]
-resources :posts, only: [:index, :show, :edit, :create, :new, :update]
+resources :posts, only: [:index, :show, :edit, :create, :new, :update, :destroy] do
+resources :post_comments, only: [:create]
+end
 get "/customers/:id/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
 patch "/customers/:id/withdraw" => "customers#withdraw", as: "withdraw"
 end

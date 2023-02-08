@@ -22,9 +22,13 @@
 
 　　　<% @customers.each do |customer| %>
           <tr>
-            <td><%#= image_tag user.get_profile_image(100,100) %></td>
-            <td><%= customer.name %></td>
-            <td><%= link_to"詳細ページへ",admin_customer_path(customer.id) %></td>
+            <th> <% if customer.image.attached? %>
+             <%= image_tag customer.image, size: "50x50" %>
+             <% else %>
+             <%= image_tag 'no_image', size: "50x50" %>
+             <% end %></th>
+            <th><%= customer.name %></th>
+            <th><%= link_to"詳細ページへ",admin_customer_path(customer.id) %></th>
           </tr>
           <% end%>
           </tbody>

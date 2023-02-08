@@ -13,12 +13,22 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @customer = current_customer
+    @post = Post.new
   end
 
   def show
+    @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
+  end
+
+  def destroy
+    post = Post.find(params[:id])  # データ（レコード）を1件取得
+    post.destroy  # データ（レコード）を削除
+    redirect_to posts_path # 投稿一覧画面へリダイレクト
   end
 
    # 投稿データのストロングパラメータ
