@@ -7,6 +7,8 @@
    　<tr>
   　　<th>image</th>
     　<th>name</th>
+    　<th></th>
+    　<th>follow</th>
      </tr>
   　</thead>
               <%#= image_tag book.get_image %>
@@ -21,8 +23,18 @@
              <% end %></th>
             <th><%= customer.name %></th>
             <th><%= link_to"詳細ページへ",customer_path(customer.id) %></th>
+            <th> <% if current_customer.following?(customer) %>
+             <%= link_to "フォロー中", customer_relationships_path(customer.id), class: "btn btn-outline-danger mx-auto my-1", method: :delete %>
+             <% else %>
+             <%= link_to "フォローする", customer_relationships_path(customer.id), class: "btn btn-outline-danger mx-auto my-1", method: :post %>
+             <% end %></th>
+             <th><%#= render 'follow', customers: customers %></th>
           </tr>
+
           <% end%>
+
+
     </tbody>
+
    </table>
  </div>

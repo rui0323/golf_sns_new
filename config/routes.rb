@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/followings'
+  get 'relationships/followers'
  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -16,13 +18,21 @@ end
 
 scope module: :public do
 root "homes#top"
-resources :customers, only: [:show, :update, :edit, :index]
+resources :customers, only: [:show, :update, :edit, :index] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
 resources :posts, only: [:index, :show, :edit, :create, :new, :update, :destroy] do
-resources :post_comments, only: [:create, :destroy]
-resource :favorites, only: [:create, :destroy]
+  resources :post_comments, only: [:create, :destroy]
+  resource :favorites, only: [:create, :destroy]
 end
 get "/customers/:id/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
 patch "/customers/:id/withdraw" => "customers#withdraw", as: "withdraw"
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+# ネストさせる
+
+
 end

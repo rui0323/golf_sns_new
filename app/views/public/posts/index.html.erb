@@ -18,7 +18,7 @@
 
      <tr>
       <th>
-     <%= post.customer.name %></th>
+     <%= link_to post.customer.name %></th>
 
      <th>
      <% if post.image.attached? %>
@@ -34,18 +34,18 @@
      <th>
         <% if post.favorited_by?(current_customer) %>
         <p>
-        <%= link_to posts_path(post), method: :delete do %>
+        <%= link_to post_favorites_path(post), method: :delete do %>
         ♥<%= post.favorites.count %> いいね
-         <% end %>
+        <% end %>
         </p>
         <% else %>
         <p>
-        <%= link_to posts_path(post), method: :post do %>
+        <%= link_to post_favorites_path(post), method: :post do %>
         ♡<%= post.favorites.count %> いいね
         <% end %>
        </p>
         <% end %>
-        </th>
+      </th>
      </tr>
 
 

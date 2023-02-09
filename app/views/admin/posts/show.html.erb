@@ -6,9 +6,13 @@
 
 
 　　　<div class="col-6 mt-5 pt-5">
-　　　 <h2>投稿詳細画面</h2>
+　　　 <h2>管理者用投稿詳細画面</h2>
        <table class="table table-borderless">
 
+　　　　 <tr>
+           <td>ユーザー</td>
+		       <td><%= link_to @customer.name,admin_customer_path %></td>
+         </tr>
          <tr>
      　　　<td>タイトル</td>
      　     <td><%= @post.title %></td>
@@ -25,6 +29,7 @@
           <%= image_tag 'no_image', size: "100x100" %>
           <% end %></td>
          </tr>
+
        </table>
       </div>
 
