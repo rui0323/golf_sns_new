@@ -1,7 +1,7 @@
 
-<div class="container mt-5 mb-5">
-  <div class="row my-3">
-    <div class="col-sm-8 px-sm-0 offset-sm-5">
+<div class="container">
+  <div class="row">
+    <div class="col-5 mt-5 pt-5 ">
       <h2>管理者用　会員詳細画面</h2>
 
        <div>
@@ -10,7 +10,7 @@
        </div>
 
       <div>
-      <table>
+       <table class="table table-borderless">
        <tr>
 		     <td>氏名</td>
 		     <td><%= @customer.name %></td>
@@ -36,6 +36,59 @@
       </tr>
      </table>
      </div>
+      </div>
+
+
+        <div class="col-7 mt-5 pt-5">
+        <h2>投稿一覧</h2>
+       <table class="table table-borderless">
+
+        <tbody>
+     <% @posts.each do |post| %>
+
+     <tr>
+      <th>
+     <%= link_to  post.customer.name,admin_customer_path(post.customer.id) %></th>
+
+     <th>
+     <% if post.image.attached? %>
+     <%= image_tag post.image, size: "50x50" %>
+     <% else %>
+     <%= image_tag 'no_image', size: "50x50" %>
+     <% end %></th>
+
+     <th><%= post.title %></th>
+     <th><%= post.caption %></th>
+     <th><%= link_to"詳細ページへ",admin_post_path(post.id) %></th>
+      <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
+     <th>
+        <% if post.favorited_by?(current_customer) %>
+        <p>
+        <%= link_to post_favorites_path(post), method: :delete do %>
+        ♥<%= post.favorites.count %> いいね
+        <% end %>
+        </p>
+        <% else %>
+        <p>
+        <%= link_to post_favorites_path(post), method: :post do %>
+        ♡<%= post.favorites.count %> いいね
+        <% end %>
+       </p>
+        <% end %>
+      </th>
+     </tr>
+
+
+
+     <% end %>
+    </tbody>
+
+             <%#= render "follow_post" %>
+         </table>
+
+
+
+
    </div>
   </div>
  </div>

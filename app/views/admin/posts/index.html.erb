@@ -15,7 +15,7 @@
 
      <tr>
       <th>
-     <%= post.customer.name %></th>
+      <%= link_to  post.customer.name,admin_customer_path(post.customer.id) %></th>
 
      <th>
      <% if post.image.attached? %>

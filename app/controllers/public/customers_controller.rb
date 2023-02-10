@@ -1,6 +1,8 @@
 class Public::CustomersController < ApplicationController
+   
   def show
     @customer = Customer.find(params[:id])
+    @posts = Post.all
   end
 
   def index
@@ -32,5 +34,7 @@ class Public::CustomersController < ApplicationController
   def customer_params
   	  params.require(:customer).permit(:name,  :email, :password,  :address, :body, :image)
   end
+
+  
 
 end

@@ -5,7 +5,7 @@
        <table class="table table-borderless">
           <tr>
            <td>ユーザー</td>
-		         <td><%= link_to @customer.name,customer_path %></td>
+		         <td><%= link_to @customer.name,customer_path(@customer.id) %></td>
           </tr>
 
           <tr>

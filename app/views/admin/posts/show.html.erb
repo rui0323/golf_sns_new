@@ -1,7 +1,7 @@
 
 
-<div class="container">
-  <div class="row">
+  <div class="main-container col-8 pt-3 offset-5">
+
 
 
 
@@ -11,7 +11,7 @@
 
 　　　　 <tr>
            <td>ユーザー</td>
-		       <td><%= link_to @customer.name,admin_customer_path %></td>
+		       <td><%= link_to @customer.name,admin_customer_path(@customer.id) %></td>
          </tr>
          <tr>
      　　　<td>タイトル</td>
@@ -35,5 +35,5 @@
 
 
 
-   </div>
+
  </div>
