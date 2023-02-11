@@ -18,7 +18,7 @@
 
      <tr>
       <th>
-     <%= link_to  post.customer.name,customer_path(post.customer.id) %></th>
+     <%= link_to  post.customer.name,customer_path(post.id) %></th>
 
      <th>
      <% if post.image.attached? %>
@@ -47,8 +47,6 @@
         <% end %>
       </th>
      </tr>
-
-
 
      <% end %>
     </tbody>

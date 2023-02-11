@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-5 mt-5 pt-5 ">
-      <h2>管理者用　会員詳細画面</h2>
+      <h2>	<%= @customer.name %>詳細画面</h2>
 
        <div>
         <%#= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
-        <%= link_to "一覧画面へ",admin_customers_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+
        </div>
 
       <div>
@@ -60,7 +60,7 @@
      <th><%= post.title %></th>
      <th><%= post.caption %></th>
      <th><%= link_to"詳細ページへ",admin_post_path(post.id) %></th>
-      <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
+      <th><%= link_to "#{post.post_comments.count} コメント", admin_post_path(post.id) %></th>
      <th>
         <% if post.favorited_by?(current_customer) %>
         <p>
