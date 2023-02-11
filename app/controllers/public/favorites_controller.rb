@@ -14,4 +14,11 @@ class Public::FavoritesController < ApplicationController
     redirect_to request.referer
 
   end
+
+
+  def index
+    @favorite_posts = Post.find(favorites)
+  end
+
+
 end

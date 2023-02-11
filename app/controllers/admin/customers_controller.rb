@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
-     @posts = Post.all
+    @posts = @customer.posts
   end
 
   def index

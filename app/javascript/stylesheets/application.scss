@@ -1,1 +1,26 @@
 @import '~bootstrap/scss/bootstrap';
+
+html{
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 100px;
+}
+header {
+  width: 100%;
+ 
+  background: #44aa33;
+}
+main {
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #44aa33;
+}

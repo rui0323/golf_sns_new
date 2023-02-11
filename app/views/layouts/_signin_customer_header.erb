@@ -1,25 +1,38 @@
  <ul class="nav justify-content-end">
   <li class="nav-item">
     <span style="margin: 10px">
-      <%= link_to "会員一覧",customers_path, class: "btn btn-outline-danger"  %>
+      <%= link_to "マイページ",customer_path(current_customer.id), class: "btn btn-outline-success"  %>
     </span>
   </li>
 
   <li class="nav-item">
     <span style="margin: 10px">
-      <%= link_to "投稿画面へ", new_post_path, class: "btn btn-outline-danger" %>
+      <%= link_to "会員一覧",customers_path, class: "btn btn-outline-success"  %>
     </span>
   </li>
 
   <li class="nav-item">
     <span style="margin: 10px">
-      <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-danger" %>
+      <%= link_to "投稿画面へ", new_post_path, class: "btn btn-outline-success" %>
     </span>
   </li>
 
   <li class="nav-item">
     <span style="margin: 10px">
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-danger"  %>
+      <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-success" %>
     </span>
   </li>
+
+  <li class="nav-item">
+    <span style="margin: 10px">
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-success"  %>
+    </span>
+  </li>
+  
+  <%= form_with url: search_posts_path, local: true, method: :get do |form| %>
+    <%= form.text_field :keyword %>
+    <%= form.submit "検索" %>
+  <% end %>
+
+
 </ul>

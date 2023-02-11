@@ -1,8 +1,8 @@
 class Public::CustomersController < ApplicationController
-   
+
   def show
     @customer = Customer.find(params[:id])
-    @posts = Post.all
+    @posts = @customer.posts
   end
 
   def index
@@ -24,6 +24,12 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+ def favorites
+     @customer = Customer.find(params[:id])
+     favorites= Favorite.where(customer_id: @customer.id).pluck(:post_id)
+     @favorite_posts = Post.find(favorites)
+ end
+
  def unsubscribe
  end
 
@@ -35,6 +41,6 @@ class Public::CustomersController < ApplicationController
   	  params.require(:customer).permit(:name,  :email, :password,  :address, :body, :image)
   end
 
-  
+
 
 end

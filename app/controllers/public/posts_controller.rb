@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @customer = current_customer
   end
 
   def create
@@ -18,7 +19,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-     
+
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @customer = Customer.find(@post.customer.id)
@@ -26,6 +27,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @customer = current_customer
   end
 
   def update
@@ -38,6 +40,16 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])  # データ（レコード）を1件取得
     post.destroy  # データ（レコード）を削除
     redirect_to posts_path # 投稿一覧画面へリダイレクト
+  end
+
+
+  def search
+    if params[:keyword].present?
+      @posts = Post.where('caption LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
+    end
   end
 
    # 投稿データのストロングパラメータ

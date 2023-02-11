@@ -24,9 +24,9 @@
             <th><%= customer.name %></th>
             <th><%= link_to"詳細ページへ",customer_path(customer.id) %></th>
             <th> <% if current_customer.following?(customer) %>
-             <%= link_to "フォロー中", customer_relationships_path(customer.id), class: "btn btn-outline-danger mx-auto my-1", method: :delete %>
+             <%= link_to "フォロー中", customer_relationships_path(customer.id), class: "btn btn-outline-success mx-auto my-1", method: :delete %>
              <% else %>
-             <%= link_to "フォローする", customer_relationships_path(customer.id), class: "btn btn-outline-danger mx-auto my-1", method: :post %>
+             <%= link_to "フォローする", customer_relationships_path(customer.id), class: "btn btn-outline-success mx-auto my-1", method: :post %>
              <% end %></th>
              <th><%#= render 'follow', customers: customers %></th>
           </tr>

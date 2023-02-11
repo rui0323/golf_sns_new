@@ -16,4 +16,10 @@ class Post < ApplicationRecord
        favorites.exists?(customer_id: customer.id)
     end
 
+
+  
+
+
 end
+   
+   
