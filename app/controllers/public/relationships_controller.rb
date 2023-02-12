@@ -1,12 +1,18 @@
 class Public::RelationshipsController < ApplicationController
   def create
-    current_customer.follow(params[:customer_id])
-    redirect_to request.referer
+    #current_customer.follow(params[:customer_id])
+     @customer = Customer.find(params[:customer_id])
+    following = current_customer.follow(params[:customer_id])
+    following.save
+    #redirect_to request.referer
   end
   # フォロー外すとき
   def destroy
-    current_customer.unfollow(params[:customer_id])
-    redirect_to request.referer
+     ##current_customer.unfollow(params[:customer_id])
+     @customer = Customer.find(params[:customer_id])
+     following = current_customer.unfollow(params[:customer_id])
+     following.destroy
+    #redirect_to request.referer
   end
   # フォロー一覧
   def followings

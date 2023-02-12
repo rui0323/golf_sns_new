@@ -2,7 +2,7 @@
   <div class="row">
 　　　<div class="col-6 mt-5 pt-5">
 　　　 <p>投稿詳細画面
-　　　 
+
 　　　   <% if @post.customer == current_customer %>
 　　　     <%= link_to "削除", post_path(@post.id), class: "btn btn-outline-success", method: :delete, "data-confirm" => "本当に削除しますか？" %>
            <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-outline-success" %></p>
@@ -45,19 +45,12 @@
       <div>
        <div class="col-12 mt-5 pt-5">
        <table class="table table-borderless">
-        <% if @post.favorited_by?(current_customer) %>
-        <p>
-        <%= link_to post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
-         <% end %>
-        </p>
-        <% else %>
-        <p>
-        <%= link_to post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
-        <% end %>
-        </p>
-        <% end %>
+
+
+         <div id="favorite_buttons_<%= @post.id %>">
+       　<%= render "public/favorites/favorites", post: @post %>
+        </div>
+
         <tr>
          <p>コメント件数：<%= @post.post_comments.count %></p>
          <% @post.post_comments.each do |post_comment| %>
@@ -74,13 +67,15 @@
 
        </div>
 
-       <div>
+
+     </table>
+     <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", :size=>"50x5" %>
         <%= f.submit "送信する" %>
         <% end %>
      </div>
-     </table>
+
      </div>
    </div>
  </div>

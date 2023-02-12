@@ -12,10 +12,10 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= link_to customer.name,customer_path(customer.id) %></td>
+          <td><%= customer.name %></td>
           <td>フォロー数: <%= customer.followings.count %></td>
           <td>フォロワー数: <%= customer.followers.count %></td>
-        </tr> 
+        </tr>
       </tbody>
     </table>
   <% end %>

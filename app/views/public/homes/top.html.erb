@@ -1,25 +1,31 @@
-<div class="main-container col-7 pt-5 offset-5">
-    
+<div class="main-container col-5 pt-5 offset-5">
+
       <p class="top-font">
        ようこそ、one on golfへ！<br>
        このサイトは、ゴルフプレーヤーのサイトになります。<br>
        会員でないかたは会員登録を行いましょう<br>
        サイトを使用するにはには会員登録が必要になります。
       </p>
-      
 
 
 
 
-　　　<div>
+　　　<table>
+　　　<tr>
+　　　  <th>
 　　　登録済の方はこちらから
       <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-success" %>
-      </div>
-      <div>    </div>
-      <div>
+      </th>
+      </tr>
+      <th>                  </th>
+      <tr>
+      </tr>
+     <tr>
+      <th>
       登録をしてない方はこちらから
       <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-success" %>
-      </div>
-
+      </th>
+      </tr>
+      </table>
 </div>
 

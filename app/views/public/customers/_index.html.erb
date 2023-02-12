@@ -1,0 +1,7 @@
+<div class="container  px-8 px-sm-8">
+<% customers.each do |customer| %>
+  <%= link_to customer_path(customer) do %>
+    <%= customer.name %><br>
+  <% end %>
+<% end %>
+</div>

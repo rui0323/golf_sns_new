@@ -13,12 +13,10 @@
          <% else %>
            <p></p>
          <% end %>
-
-         <% if current_customer.following?(@customer) %>
-             <%= link_to "フォロー中", customer_relationships_path(@customer.id), class: "btn btn-outline-success mx-auto my-1", method: :delete %>
-             <% else %>
-             <%= link_to "フォローする", customer_relationships_path(@customer.id), class: "btn btn-outline-success mx-auto my-1", method: :post %>
-             <% end %>
+           
+           <th id="follow-<%= @customer.id %>-ajax">
+           <%= render "public/shared/follow", customer: @customer %>
+            </th>
 
          <table class="table table-borderless">
            <tr>
@@ -80,26 +78,15 @@
             <th><%= post.caption %></th>
             <th><%= link_to"詳細ページへ",post_path(post.id) %></th>
             <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
-            <th>
-               <% if post.favorited_by?(current_customer) %>
-               <p>
-               <%= link_to post_favorites_path(post), method: :delete do %>
-               ♥<%= post.favorites.count %> いいね
-               <% end %>
-               </p>
-               <% else %>
-               <p>
-               <%= link_to post_favorites_path(post), method: :post do %>
-               ♡<%= post.favorites.count %> いいね
-               <% end %>
-              </p>
-               <% end %>
+            <th id="favorite_buttons_<%= post.id %>">
+　　        　<%= render "public/favorites/favorites",  post: post %>
+
              </th>
           </tr>
 
      <% end %>
     </tbody>
-　　　　
+
              <%#= render "follow_post" %>
          </table>
       </div>
