@@ -13,6 +13,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+const images = require.context('../images/', true)
 
 
 

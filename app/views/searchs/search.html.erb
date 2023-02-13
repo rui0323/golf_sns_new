@@ -1,3 +1,5 @@
+<div class="main-container col-5 pt-2 offset-4">
+
 <% if @model == 'customer' %>
   <h3>【ユーザーの検索結果】検索ワード：<%= @content %></h3>
   <%= render 'public/customers/index', customers: @records %>
@@ -5,3 +7,5 @@
   <h3>【Postsモデルの検索結果】検索ワード：<%= @content %></h3>
     <%= render 'public/posts/index', posts: @records %>
 <% end %>
+
+</div>

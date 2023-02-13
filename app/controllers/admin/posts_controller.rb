@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page])
     @post = Post.new
     @customer = current_customer
   end

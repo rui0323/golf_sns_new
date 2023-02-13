@@ -8,14 +8,18 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
-    @post.save
+    if @post.save
     redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page])
     @customer = current_customer
     @post = Post.new
+    
   end
 
   def show

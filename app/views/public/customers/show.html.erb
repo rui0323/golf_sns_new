@@ -10,13 +10,14 @@
          <% if @customer == current_customer %>
         <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-success mx-auto my-1" %>&emsp;
         <%= link_to "一覧画面へ",customers_path, class: "btn btn-outline-success mx-auto my-1" %>&emsp;
+        　<%= link_to "退会する",unsubscribe_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
          <% else %>
            <p></p>
          <% end %>
-           
-           <th id="follow-<%= @customer.id %>-ajax">
+
+           <div id="follow-<%= @customer.id %>-ajax">
            <%= render "public/shared/follow", customer: @customer %>
-            </th>
+            </div>
 
          <table class="table table-borderless">
            <tr>
@@ -50,6 +51,7 @@
 
            <tr>
             　<th><%=link_to"いいね一覧",favorites_customer_path(@customer) %></th>
+
            </tr>
 
          </table>
@@ -89,6 +91,7 @@
 
              <%#= render "follow_post" %>
          </table>
+         <%= paginate @posts %>
       </div>
    </div>
  </div>
