@@ -5,13 +5,19 @@
     <div class="col-5 mt-5 pt-5 ">
       <h2>	<%= @customer.name %>詳細画面</h2>
 
-
+      <%= link_to "利用停止",admin_withdraw_path(@customer), method: :patch,class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
 
       <div>
       <table class="table table-hover table-dark">
        <tr>
 		     <td>氏名</td>
-		     <td><%= @customer.name %></td>
+		     <td>
+		       <% if @customer.is_deleted == false %>
+					        <%= @customer.name %>
+					      <% else %>
+				  	      退会済み
+            <% end %>
+		     </td>
        </tr>
 
       <tr>
@@ -101,4 +107,3 @@
   </div>
  </div>
 
- 
