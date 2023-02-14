@@ -1,3 +1,4 @@
+<div class="customer-background" >
 <div class="container">
   <div class="row">
 　　　<div class="col-6 mt-5 pt-5">
@@ -13,7 +14,13 @@
        <table class="table table-borderless">
           <tr>
            <td>ユーザー</td>
-		         <td><%= link_to @customer.name,customer_path(@customer.id) %></td>
+		         <td>
+		          <% if @customer.is_deleted == false %>
+		          <%= link_to @customer.name,customer_path(@customer.id) %>
+		          <% else %>
+		           退会済みユーザー
+           <% end %>
+		          </td>
           </tr>
 
           <tr>
@@ -29,9 +36,9 @@
           <tr>
     　      <td>投稿画像</td>
     　　 　 　<td><% if @post.image.attached? %>
-            <%= image_tag @post.image, size: "100x100" %>
+            <%= image_tag @post.image,class: "rounded-circle", size: "100x100" %>
            <% else %>
-            <%= image_tag 'no_image', size: "100x100" %>
+            <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
            <% end %></td>
           </tr>
 
@@ -72,10 +79,11 @@
      <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", :size=>"50x5" %>
-        <%= f.submit "送信する" %>
+        <p><%= f.submit "送信する", class: "btn btn-outline-success" %></p>
         <% end %>
      </div>
 
      </div>
    </div>
+ </div>
  </div>

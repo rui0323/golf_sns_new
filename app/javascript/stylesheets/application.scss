@@ -25,10 +25,76 @@ footer {
   background: #44aa33;
 }
 
-.top-background {
+.home-background {
   position: relative;
   width: 100%;
   min-height: 150vh;
   background-size: cover;
-  background-image: url('../images/golf.jpg');
+  background-image: url('../images/golf_home.jpg');
 }
+
+.post-background {
+  position: relative;
+  width: 100%;
+  min-height: 160vh;
+  background-size: cover;
+  background-image: url('../images/golf_post.jpg');
+}
+
+.customer-background {
+  position: relative;
+  width: 100%;
+  min-height: 130vh;
+  background-size: cover;
+  background-image: url('../images/golf_customer.jpg');
+}
+
+.follow-background {
+  position: relative;
+  width: 100%;
+  min-height: 130vh;
+  background-size: cover;
+  background-image: url('../images/golf_follow.jpg');
+}
+
+.new-background {
+  position: relative;
+  width: 100%;
+  min-height: 130vh;
+  background-size: cover;
+  background-image: url('../images/golf_new.jpg');
+}
+
+.pagination {
+  justify-content: center;
+}
+
+
+.image_input_btn{
+        display: block;
+        background-color: #AEFFBD;
+        width: 180px;
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border-radius: 5px;
+        padding-top: 2px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .image_form{
+        display: none;
+      }
+      
+.box {
+  background:#FFFFFF;
+box-shadow: 0px 0px 15px 0px rgba(98,98,98,0.8); /*影の指定*/
+padding:10px;
+}
+.box p {
+margin:0;
+padding:0;
+}
+

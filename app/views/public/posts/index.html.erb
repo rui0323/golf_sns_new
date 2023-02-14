@@ -1,5 +1,7 @@
+<div class="post-background" >
 <div class="container mt-5 mb-5">
 　<p><span class="bg-lightsecondary">投稿一覧</span>
+　　<div class="box">
  　<table class="table table-hover">
  　  <thead>
    　<tr>
@@ -17,12 +19,16 @@
      <% @posts.each do |post| %>
      <tr>
       <th>
+       <% if  post.customer.is_deleted == false %>
        <%= link_to  post.customer.name,customer_path(post.customer.id) %></th>
+         <% else %>
+         退会済みユーザー
+         <% end %>
       <th>
        <% if post.image.attached? %>
-       <%= image_tag post.image, size: "50x50" %>
+       <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
        <% else %>
-       <%= image_tag 'no_image', size: "50x50" %>
+       <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
        <% end %></th>
 
       <th><%= post.title %></th>
@@ -30,16 +36,16 @@
       <th><%= link_to"投稿詳細",post_path(post.id) %></th>
       <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
       <th>
-       
+
       <div id="favorite_buttons_<%= post.id %>">
        <%= render "public/favorites/favorites", post: post %>
       </div>
       </th>
      </tr>
-     
      <% end %>
     </tbody>
    </table>
-   <%= paginate @posts %>
-  
+   <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>
 </div>

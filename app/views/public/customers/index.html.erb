@@ -1,7 +1,8 @@
 
-
+<div class="customer-background" >
  <div class="container  px-8 px-sm-8">
 　<p><span class="bg-lightsecondary">会員一覧</span>
+　<div class="box">
  　<table class="table ">
  　 <thead>
    　<tr>
@@ -17,11 +18,17 @@
 　　　<% @customers.each do |customer| %>
           <tr>
             <th> <% if customer.image.attached? %>
-             <%= image_tag customer.image, size: "50x50" %>
+             <%= image_tag customer.image,class: "rounded-circle", size: "50x50" %>
              <% else %>
-             <%= image_tag 'no_image', size: "50x50" %>
+             <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
              <% end %></th>
-            <th><%= customer.name %></th>
+            <th>
+             <% if customer.is_deleted == false %>
+             <%= customer.name %>
+             <% else %>
+              退会済みユーザー
+              <% end %>
+             </th>
             <th><%= link_to"詳細ページへ",customer_path(customer.id) %></th>
 
            <th id="follow-<%= customer.id %>-ajax">
@@ -36,4 +43,6 @@
     </tbody>
 
    </table>
+ </div>
+ </div>
  </div>
