@@ -1,21 +1,20 @@
 <div class="post-background" >
-<div class="container mt-5 mb-5">
-　<p><span class="bg-lightsecondary">投稿一覧</span>
-　　<div class="box">
+<div class="container  pt-5 px-sm-8">
+　<div class="box">
  　<table class="table table-hover">
- 　  <thead>
+ 　  <thead  class="font_test">
    　<tr>
-  　 　<th>ユーザーネーム</th>
-    　<th>投稿ユーザー画像</th>
+   　<h2  class="font_test">投稿一覧</h2>
+  　 　<th>投稿者</th>
+    　<th>投稿画像</th>
     　<th>タイトル</th>
-    　<th>説明</th>
     　<th>詳細</th>
     　<th>コメント件数</th>
       <th>いいね</th>
      </tr>
   　</thead>
 
-  　<tbody>
+  　<tbody  class="font_test">
      <% @posts.each do |post| %>
      <tr>
       <th>
@@ -32,7 +31,7 @@
        <% end %></th>
 
       <th><%= post.title %></th>
-      <th><%= post.caption %></th>
+      
       <th><%= link_to"投稿詳細",post_path(post.id) %></th>
       <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
       <th>
@@ -47,5 +46,5 @@
    </table>
    <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
   </div>
-</div>
+ </div>
 </div>

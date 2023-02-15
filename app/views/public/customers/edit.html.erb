@@ -1,11 +1,23 @@
-
-     <div class="main-container col-7 pt-5 offset-5">
-     <h2>会員情報編集</h2>
+    <div class="customer-background" >
+     <div class="container col-7 pt-5 offset-4">
+       <div class="box text-white">
+     <h2>ユーザー情報編集</h2>
 
 
 
 
         <%= form_for(@customer) do |f| %>
+
+
+         <div class="form-group">
+             <%= f.label :image, "画像をアップロード", class: "btn btn-outline-success" %>
+         <div class="row">
+          <%= f.file_field :image, accept: "image/*" ,class: "image_form" %>
+         </div>
+         </div>
+
+
+
         <div class="form-group">
         <%= f.label :氏名, class: "brown-border px-3" %>
          <div class="row">
@@ -24,21 +36,18 @@
          <div class="form-group">
           <%= f.label :自己紹介, class: "brown-border px-3" %>
          <div class="row">
-          <%= f.text_area :body, class: "form-control offset-1 col-4"%>
+          <%= f.text_area :body, :size=>"5x5", class: "form-control offset-1 col-4"%>
          </div>
          </div>
 
-         <div class="form-group">
-          <%= f.label :アイコン画像, class: "brown-border px-3" %>
-         <div class="row">
-          <%= f.file_field :image, accept: "image/*" , class: "form-control offset-1 col-4"%>
-         </div>
-         </div>
 
-          <div class="row">
-          <%= f.submit "編集内容を保存する", class: "btn btn-outline-danger" %>&emsp;
+
+          <div class="row offset-1 ">
+          <%= f.submit "編集を保存する", class: "btn btn-outline-danger" %>&emsp;
           <%= link_to"詳細ページへ戻る",customer_path(@customer), class: "btn btn-outline-danger" %>
           </div>
           <% end %>
-         <%#= link_to "退会する" , unsubscribe_path(current_customer), class: "btn btn-outline-danger mt-auto" %>
+         
+   </div>
+  </div>
    </div>

@@ -6,7 +6,7 @@ ja:
     attributes:
       post:
         title: "タイトル"
-        caption: "文章"
+        caption: "説明"
         image: "画像"
     errors:
       messages:

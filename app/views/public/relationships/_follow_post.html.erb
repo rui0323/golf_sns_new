@@ -1,9 +1,9 @@
 <div class="follow-background" >
-<div class="main-container col-7 pt-5 offset-5">
-
+<div class="main-container col-3 pt-5 offset-4">
+ <div class="box">
 <% unless customers.blank? %>
   <% customers.each do |customer| %>
-    <table>
+    <table  class="font_test">
       <thead>
         <tr>
           <th>name</th>
@@ -16,12 +16,13 @@
           <td><%= link_to customer.name,customer_path(customer.id) %></td>
           <td>フォロー数: <%= customer.followings.count %></td>
           <td>フォロワー数: <%= customer.followers.count %></td>
-        </tr> 
+        </tr>
       </tbody>
     </table>
   <% end %>
 <% else %>
-  <p>ユーザーはいません</p>
+  <p　 class="font_test">ユーザーはいません</p>
 <% end %>
+</div>
 </div>
 </div>

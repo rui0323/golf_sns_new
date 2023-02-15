@@ -1,14 +1,15 @@
 
 <div class="customer-background" >
-  <div class="container">
+  <div class="container pt-5 px-sm-2">
+   <div class="box font_test">
     <div class="row">
-      <div class="col-5 mt-5 pt-5">
+      <div class="col-4">
        <% if @customer == current_customer %>
         <h2>マイページ</h2>
        <% else %>
         <h2>	<%= @customer.name %>詳細画面</h2>
        <% end %>
-       
+
        <div>
          <% if @customer == current_customer %>
            <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-success mx-auto my-1" %>&emsp;
@@ -22,7 +23,7 @@
            <%= render "public/shared/follow", customer: @customer %>
          </div>
 
-          <table class="table table-borderless">
+          <table class="table table-borderless font_test">
             <tr>
 		            <td>氏名</td>
 					         <td>
@@ -35,8 +36,12 @@
             </tr>
 
             <tr>
+            　  <% if @customer == current_customer %>
             　 <td>メールアドレス</td>
               <td><%= @customer.email %></td>
+               <% else %>
+                <p></p>
+         <% end %>
             </tr>
 
             <tr>
@@ -46,12 +51,17 @@
 
             <tr>
               <td>アイコン</td>
+              </div>
+
               <td><% if @customer.image.attached? %>
                 <%= image_tag @customer.image,class: "rounded-circle", size: "100x100" %>
               <% else %>
                 <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
               <% end %>
               </td>
+               <!-- ./ポップアップの中身　ここまで -->
+        </div>
+      </div>
             </tr>
 
             <tr>
@@ -67,9 +77,9 @@
        </div>
      </div>
 
-         <div class="col-7 mt-5 pt-5">
+         <div class="col-8">
            <h2>投稿一覧</h2>
-           <table class="table table-borderless">
+           <table class="table table-borderless font_test">
              <tbody>
                <% @posts.each do |post| %>
 
@@ -80,8 +90,8 @@
                    <% else %>
                      退会済み
                    <% end %>
-                  </th> 
-                   
+                  </th>
+
                   <th>
                     <% if post.image.attached? %>
                       <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
@@ -108,3 +118,4 @@
     </div>
   </div>
 </div>
+ </div>
