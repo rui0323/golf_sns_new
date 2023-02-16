@@ -1,4 +1,6 @@
-<div class="main-container col-5 pt-2 offset-4">
+<div class="customer-background" >
+<div class="main-container col-5 pt-5 offset-4">
+   <div class="box font_test">
 
 <% if @model == 'customer' %>
   <h3>【ユーザーの検索結果】検索ワード：<%= @content %></h3>
@@ -8,4 +10,6 @@
     <%= render 'public/posts/index', posts: @records %>
 <% end %>
 
+</div>
+</div>
 </div>

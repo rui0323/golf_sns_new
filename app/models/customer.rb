@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :customers, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
 
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -43,5 +44,7 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+
+ 
 
 end

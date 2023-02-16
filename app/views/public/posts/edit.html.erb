@@ -6,14 +6,14 @@
 
   <%= form_with model: @post do |f| %>
   <h4>画像を選択</h4>
-  <%= f.label :image, "画像をアップロード", class: "btn btn-outline-success" %>
+  <%= f.label :image, "画像をアップロード", class:"btn-gradient-simple mx-auto" %>
     <%= f.file_field :image, accept: "image/*",class: "image_form" %>
   <h4>タイトル</h4>
     <%= f.text_field :title, :size=>"30" %>
   <h4>本文</h4>
     <%= f.text_area :caption, :size=>"60x10"  %>
     <p>
-    <%= f.submit '変更保存', class: "btn btn-outline-success" %>
+    <%= f.submit '変更保存', class: "btn-gradient-simple mx-auto" %>
     </p>
  <% end %>
 </div>

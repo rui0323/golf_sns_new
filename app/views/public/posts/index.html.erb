@@ -8,7 +8,7 @@
   　 　<th>投稿者</th>
     　<th>投稿画像</th>
     　<th>タイトル</th>
-    　<th>詳細</th>
+    　<th>投稿詳細</th>
     　<th>コメント件数</th>
       <th>いいね</th>
      </tr>
@@ -31,14 +31,15 @@
        <% end %></th>
 
       <th><%= post.title %></th>
-      
+
       <th><%= link_to"投稿詳細",post_path(post.id) %></th>
-      <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
+      <th><%= "#{post.post_comments.count} コメント" %></th>
       <th>
 
       <div id="favorite_buttons_<%= post.id %>">
        <%= render "public/favorites/favorites", post: post %>
       </div>
+
       </th>
      </tr>
      <% end %>

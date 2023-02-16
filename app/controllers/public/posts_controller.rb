@@ -16,16 +16,17 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page])
+    @posts = Post.all.order(created_at: :desc).page(params[:page])
     @customer = current_customer
     @post = Post.new
-    
+
   end
 
   def show
 
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @post_comments = @post.post_comments.all.page(params[:page]).per(5)
     @customer = Customer.find(@post.customer.id)
   end
 

@@ -1,6 +1,6 @@
 
 <div class="customer-background" >
-  <div class="container pt-5 px-sm-2">
+  <div class="container pt-5 px-sm-8">
    <div class="box font_test">
     <div class="row">
       <div class="col-4">
@@ -12,9 +12,9 @@
 
        <div>
          <% if @customer == current_customer %>
-           <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-success mx-auto my-1" %>&emsp;
-           <%= link_to "一覧画面へ",customers_path, class: "btn btn-outline-success mx-auto my-1" %>&emsp;
-           <%= link_to "退会する",unsubscribe_path, class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+           <%= link_to "編集する", edit_customer_path(@customer), class: "btn-gradient-simple mx-auto my-1" %>&emsp;
+           <%= link_to "一覧画面",customers_path, class: "btn-gradient-simple mx-auto my-1" %>&emsp;
+           <%= link_to "退会する",unsubscribe_path, class: "btn-gradient-simple mx-auto" %>&emsp;
          <% else %>
            <p></p>
          <% end %>
@@ -23,73 +23,67 @@
            <%= render "public/shared/follow", customer: @customer %>
          </div>
 
-          <table class="table table-borderless font_test">
-            <tr>
-		            <td>氏名</td>
-					         <td>
-					           <% if @customer.is_deleted == false %>
-					            	<%= @customer.name %>
-					         	 <% else %>
-				  	        	  退会済み
-                <% end %>
-					        	</td>
-            </tr>
+          <table class="table font_test">
+                 <tr>
+		          <th>氏名</th>
+					<td>
+					  <% if @customer.is_deleted == false %>
+					  <%= @customer.name %>
+					  <% else %>
+				  	   退会済み
+                　　　<% end %>
+					</td>
+                 </tr>
 
-            <tr>
-            　  <% if @customer == current_customer %>
-            　 <td>メールアドレス</td>
-              <td><%= @customer.email %></td>
-               <% else %>
-                <p></p>
-         <% end %>
-            </tr>
+                 <tr>
+                　  <% if @customer == current_customer %>
+                  　 <th style="word-break: keep-all";>メールアドレス</th>
+                     <td><%= @customer.email %></td>
+                   <% else %>
+                     <p></p>
+                   <% end %>
+                 </tr>
 
-            <tr>
-              <td>自己紹介</td>
-              <td><%= @customer.body %></td>
-            </tr>
+                 <tr>
+                   <th style="word-break: keep-all";>自己紹介</th>
+                   <td><%= @customer.body %></td>
+                 </tr>
 
-            <tr>
-              <td>アイコン</td>
-              </div>
+                 <tr>
+                   <th style="word-break: keep-all";>アイコン</th>
+                   <td><% if @customer.image.attached? %>
+                         <%= image_tag @customer.image,class: "rounded-circle", size: "100x100" %>
+                       <% else %>
+                         <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
+                        <% end %>
+                   </td>
+                  </tr>
 
-              <td><% if @customer.image.attached? %>
-                <%= image_tag @customer.image,class: "rounded-circle", size: "100x100" %>
-              <% else %>
-                <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
-              <% end %>
-              </td>
-               <!-- ./ポップアップの中身　ここまで -->
+                 <tr>
+                  <td><%= link_to "フォロー数", customer_followings_path(@customer.id) %>:<%= @customer.followings.count %></td>
+                  <td><%= link_to "フォロワー数",customer_followers_path(@customer.id)  %>:<%= @customer.followers.count %></td>
+                 </tr>
+
+                 <tr>
+                　<td><%=link_to"いいね一覧",favorites_customer_path(@customer) %></td>
+                　<td></td>
+                 </tr>
+            </table>
+          </div>
         </div>
-      </div>
-            </tr>
-
-            <tr>
-              <td><%= link_to "フォロー数", customer_followings_path(@customer.id) %>:<%= @customer.followings.count %></td>
-              <td><%= link_to "フォロワー数",customer_followers_path(@customer.id)  %>:<%= @customer.followers.count %></td>
-            </tr>
-
-            <tr>
-            　<td><%=link_to"いいね一覧",favorites_customer_path(@customer) %></td>
-            </tr>
-          </table>
-
-       </div>
-     </div>
 
          <div class="col-8">
-           <h2>投稿一覧</h2>
-           <table class="table table-borderless font_test">
+          <h2>投稿一覧</h2>
+           <table class="table  font_test">
              <tbody>
                <% @posts.each do |post| %>
-
-               <tr>
-                 <th>
-                   <% if post.customer.is_deleted == false %>
-                     <%= link_to  post.customer.name,customer_path(post.customer.id) %>
-                   <% else %>
-                     退会済み
-                   <% end %>
+                <tr>
+                  <th>
+                    <% if post.customer.is_deleted == false %>
+                      <%= link_to  post.customer.name,customer_path(post.customer.id) %>
+                    <% else %>
+                       退会済み
+                    <% end %>
                   </th>
 
                   <th>
@@ -100,14 +94,16 @@
                     <% end %>
                   </th>
 
-                  <th><%= post.title %></th>
-                  <th><%= post.caption %></th>
+                  <th>
+                    <%= post.title %>
+                  </th>
+
                   <th><%= link_to"詳細ページへ",post_path(post.id) %></th>
                   <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
                   <th>
-                    <div id="favorite_buttons_<%= post.id %>">
-　　              　<%= render "public/favorites/favorites",  post: post %>
-　　              　</div>
+                      <div id="favorite_buttons_<%= post.id %>">
+　　              　  <%= render "public/favorites/favorites",  post: post %>
+　　                　</div>
                   </th>
                 </tr>
                 <% end %>
@@ -115,7 +111,7 @@
             </table>
            <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
         </div>
+      </div>
     </div>
   </div>
 </div>
- </div>

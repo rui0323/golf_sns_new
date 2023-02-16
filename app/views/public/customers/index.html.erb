@@ -3,9 +3,10 @@
  <div class="container  pt-5 px-sm-8">
 　<div class="box">
  　<table class="table font_test">
+ 　 　 <h2>ユーザー</h2>
  　 <thead>
    　<tr>
-   　 <h2 class="font_test">ユーザー</h2>
+   
   　　<th>アイコン</th>
     　<th>名前</th>
     　<th></th>
@@ -17,7 +18,8 @@
     <tbody>
 　　　<% @customers.each do |customer| %>
           <tr>
-            <th> <% if customer.image.attached? %>
+            <th>
+             <% if customer.image.attached? %>
              <%= image_tag customer.image,class: "rounded-circle", size: "50x50" %>
              <% else %>
              <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>

@@ -3,7 +3,7 @@
   <div class="main-container col-4 pt-5 offset-4">
   <div class="box text-white">
 
-    <h2>画像投稿フォーム</h2>
+    <h2>投稿フォーム</h2>
 
 
     <% if @post.errors.any? %>
@@ -16,15 +16,15 @@
     <% end %>
 
     <%= form_with model: @post do |f| %>
-    <h4>画像を選択</h4>
-      <%= f.label :image, "画像をアップロード", class: "btn btn-outline-success" %>
+    <h5>画像を選択</h5>
+      <%= f.label :image, "画像をアップロード", class: "btn-gradient-simple mx-auto" %>
       <%= f.file_field :image, accept: "image/*",class: "image_form" %>
-    <h4>タイトル</h4>
+    <h5>タイトル</h5>
       <%= f.text_field :title, :size=>"40" %>
-    <h4>説明</h4>
+    <h5>説明</h5>
       <%= f.text_area :caption, :size=>"60x10" %>
     <p>
-     <%= f.submit '投稿', class: "btn btn-outline-success" %>
+     <%= f.submit '投稿', class: "btn-gradient-simple mx-auto" %>
      </p>
     <% end %>
   </div>

@@ -2,11 +2,11 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-5 mt-5 pt-5 ">
-      <h2>	<%= @customer.name %>詳細画面</h2>
+    <div class="col-4 mt-5 pt-5 ">
+      <h2>	<%= @customer.name %>詳細画面
 
       <%= link_to "利用停止",admin_withdraw_path(@customer), method: :patch,class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
-
+  </h2>
       <div>
       <table class="table table-hover table-dark">
        <tr>
@@ -40,11 +40,12 @@
       </tr>
 
       <tr>
-          <td><%= link_to "フォロー数", customer_followings_path(@customer.id) %>:<%= @customer.followings.count %></td>
-          <td><%= link_to "フォロワー数",customer_followers_path(@customer.id)  %>:<%= @customer.followers.count %></td>
+          <td><%=  "フォロー数" %>:<%= @customer.followings.count %></td>
+          <td><%=  "フォロワー数"%>:<%= @customer.followers.count %></td>
       </tr>
 
        <tr>
+         <th></th>
           <th><%=link_to"いいね一覧",favorites_customer_path(@customer) %></th>
        </tr>
 
@@ -53,7 +54,7 @@
       </div>
 
 
-        <div class="col-7 mt-5 pt-5">
+        <div class="col-8 mt-5 pt-5">
         <h2>投稿一覧</h2>
       <table class="table table-hover table-dark">
 
@@ -72,7 +73,6 @@
      <% end %></th>
 
      <th><%= post.title %></th>
-     <th><%= post.caption %></th>
      <th><%= link_to"投稿詳細",admin_post_path(post.id) %></th>
       <th><%= "#{post.post_comments.count} コメント" %></th>
      <th>
@@ -84,25 +84,17 @@
         </p>
         <% else %>
         <p>
-        <%= link_to post_favorites_path(post), method: :post do %>
+        <%#= link_to post_favorites_path(post), method: :post do %>
         ♡<%= post.favorites.count %> いいね
-        <% end %>
+        <%# end %>
        </p>
         <% end %>
       </th>
      </tr>
-
-
-
      <% end %>
     </tbody>
-
              <%#= render "follow_post" %>
          </table>
-
-
-
-
    </div>
   </div>
  </div>

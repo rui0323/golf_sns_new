@@ -2,27 +2,24 @@
 <table>
     <thead>
         <tr>
-            <th>投稿者名</th>
-            <th>タイトル</th>
-            <th>本文</th>
+            <th><h3>投稿者名</h3></th>
             <th></th>
+            <th><h3>タイトル</h3></th>
             <th></th>
             <th></th>
         </tr>
     </thead>
 
     <tbody id="post">
-    <% posts.each do |post| %>
-      <tr>
-        <th><%= post.customer.name %></th>
-        <th><%= post.title %></th>
-        <th><%= post.caption %></th>
-        <th><%= link_to "詳細", post_path(post) %></th>
-        <% if post.customer == current_customer %>
-
-        <% else %>
-        <td></td>
-        <td></td>
+      <% posts.each do |post| %>
+        <tr>
+          <th><h3><%= post.customer.name %></h3></th>
+          <th></th>
+          <th><h3><%= post.title %></h3></th>
+          <th><h3><%= link_to "詳細", post_path(post) %></h3></th>
+          <% if post.customer == current_customer %>
+          <% else %>
+       
         <% end %>
       </tr>
     <% end %>

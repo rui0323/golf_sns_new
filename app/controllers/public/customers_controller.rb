@@ -1,9 +1,12 @@
 class Public::CustomersController < ApplicationController
 
+
   def show
     @customer = Customer.find(params[:id])
+    @posts = @customer.posts.page(params[:page]).per(7)
 
-    @posts = @customer.posts.page(params[:page]).per(5)
+
+
 
   end
 
