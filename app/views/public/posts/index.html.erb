@@ -1,51 +1,50 @@
 <div class="post-background" >
-<div class="container  pt-5 px-sm-8">
-　<div class="box">
- 　<table class="table table-hover">
- 　  <thead  class="font_test">
-   　<tr>
-   　<h2  class="font_test">投稿一覧</h2>
-  　 　<th>投稿者</th>
-    　<th>投稿画像</th>
-    　<th>タイトル</th>
-    　<th>投稿詳細</th>
-    　<th>コメント件数</th>
-      <th>いいね</th>
-     </tr>
-  　</thead>
+  <div class="container  pt-5 px-sm-8">
+  　<div class="box">
+ 　    <table class="table table-hover">
+ 　      <thead class="font_test">
+        　<tr>
+   　        <h2  class="font_test text-center">投稿一覧</h2>
+  　       　<th>投稿者</th>
+          　<th>投稿画像</th>
+          　<th>タイトル</th>
+          　<th>投稿詳細</th>
+          　<th>コメント件数</th>
+            <th>いいね</th>
+            <th>投稿日</th>
+          </tr>
+      　</thead>
 
-  　<tbody  class="font_test">
-     <% @posts.each do |post| %>
-     <tr>
-      <th>
-       <% if  post.customer.is_deleted == false %>
-       <%= link_to  post.customer.name,customer_path(post.customer.id) %></th>
-         <% else %>
-         退会済みユーザー
-         <% end %>
-      <th>
-       <% if post.image.attached? %>
-       <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
-       <% else %>
-       <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
-       <% end %></th>
+        <tbody  class="font_test">
+          <% @posts.each do |post| %>
+          <tr>
+            <th>
+              <% if  post.customer.is_deleted == false %>
+                <%= link_to  post.customer.name,customer_path(post.customer.id) %></th>
+              <% else %>
+                退会済みユーザー
+              <% end %>
+            <th>
+             <% if post.image.attached? %>
+               <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
+             <% else %>
+               <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
+             <% end %></th>
 
-      <th><%= post.title %></th>
-
-      <th><%= link_to"投稿詳細",post_path(post.id) %></th>
-      <th><%= "#{post.post_comments.count} コメント" %></th>
-      <th>
-
-      <div id="favorite_buttons_<%= post.id %>">
-       <%= render "public/favorites/favorites", post: post %>
-      </div>
-
-      </th>
-     </tr>
-     <% end %>
-    </tbody>
-   </table>
-   <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+            <th><%= post.title %></th>
+            <th><%= link_to"投稿詳細",post_path(post.id) %></th>
+            <th><%= "#{post.post_comments.count} コメント" %></th>
+            <th>
+             <div id="favorite_buttons_<%= post.id %>">
+             <%= render "public/favorites/favorites", post: post %>
+             </div>
+            </th>
+            <th> <%= post.created_at.strftime('%Y/%m/%d') %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+     <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+    </div>
   </div>
- </div>
 </div>

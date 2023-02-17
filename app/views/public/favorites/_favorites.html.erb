@@ -1,13 +1,14 @@
-             <% if post.favorited_by?(current_customer) %>
-               <p>
-               <%= link_to post_favorites_path(post), method: :delete,remote: true do %>
-               ♥<%= post.favorites.count %> いいね
-               <% end %>
-               </p>
-               <% else %>
-               <p>
-               <%= link_to post_favorites_path(post), method: :post,remote: true do %>
-               ♡<%= post.favorites.count %> いいね
-               <% end %>
-              </p>
-               <% end %>
+<% if post.favorited_by?(current_customer) %>
+  <p>
+    <%= link_to post_favorites_path(post),class: "btn-gradient-simple mx-auto", method: :delete,remote: true do  %>
+      ♥<%= post.favorites.count %> いいね
+    <% end %>
+  </p>
+    <% else %>
+
+  <p>
+    <%= link_to post_favorites_path(post),class: "btn-gradient-simple mx-auto", method: :post,remote: true do %>
+      ♡<%= post.favorites.count %> いいね
+    <% end %>
+  </p>
+    <% end %>

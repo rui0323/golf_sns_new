@@ -1,28 +1,29 @@
 <div class="follow-background" >
-<div class="main-container col-3 pt-5 offset-4">
- <div class="box">
-<% unless customers.blank? %>
-  <% customers.each do |customer| %>
-    <table  class="font_test">
-      <thead>
-        <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= link_to customer.name,customer_path(customer.id) %></td>
-          <td>フォロー数: <%= customer.followings.count %></td>
-          <td>フォロワー数: <%= customer.followers.count %></td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
-<% else %>
-  <p　 class="font_test">ユーザーはいません</p>
-<% end %>
-</div>
-</div>
+  <div class="main-container col-3 pt-5 offset-4">
+    <div class="box">
+      <table  class="table  table-hove font_test">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% unless customers.blank? %>
+          <% customers.each do |customer| %>
+          <tr>
+            <td><%= link_to customer.name,customer_path(customer.id) %></td>
+            <td>フォロー数: <%= customer.followings.count %></td>
+            <td>フォロワー数: <%= customer.followers.count %></td>
+          </tr>
+          <% end %>
+          <% else %>
+          <p>ユーザーはいません</p>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

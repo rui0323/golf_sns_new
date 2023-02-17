@@ -1,33 +1,28 @@
-  <div class="new-background" >
-
+<div class="new-background" >
   <div class="main-container col-4 pt-5 offset-4">
-  <div class="box text-white">
+    <div class="box text-white">
+      <h2 class= "text-center">投稿フォーム</h2>
+        <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
 
-    <h2>投稿フォーム</h2>
-
-
-    <% if @post.errors.any? %>
-   <%= @post.errors.count %>件のエラーが発生しました
-   <ul>
-    <% @post.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-    </ul>
-    <% end %>
-
-    <%= form_with model: @post do |f| %>
-    <h5>画像を選択</h5>
-      <%= f.label :image, "画像をアップロード", class: "btn-gradient-simple mx-auto" %>
-      <%= f.file_field :image, accept: "image/*",class: "image_form" %>
-    <h5>タイトル</h5>
-      <%= f.text_field :title, :size=>"40" %>
-    <h5>説明</h5>
-      <%= f.text_area :caption, :size=>"60x10" %>
-    <p>
-     <%= f.submit '投稿', class: "btn-gradient-simple mx-auto" %>
-     </p>
-    <% end %>
+        <%= form_with model: @post do |f| %>
+          <h5>画像を選択</h5>
+        <%= f.label :image, "画像をアップロード", class: "btn-gradient-simple mx-auto" %>
+        <%= f.file_field :image, accept: "image/*",class: "image_form" %>
+          <h5>タイトル</h5>
+        <%= f.text_field :title, :size=>"40" %>
+          <h5>本文</h5>
+        <%= f.text_area :caption, :size=>"60x10" %>
+          <p>
+            <%= f.submit '投稿', class: "btn-gradient-simple mx-auto" %>
+          </p>
+        <% end %>
+    </div>
   </div>
-  </div>
-
-  </div>
+</div>

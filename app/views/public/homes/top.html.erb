@@ -1,37 +1,33 @@
 <div class="home-background" >
-<div class=" main-container col-5 pt-5 offset-4">
-
-
-<div class="ribbon6">
-  <h3>ようこそ、one on golfへ！</h3>
-</div>
+  <div class=" main-container col-6 pt-5 offset-4">
+    <div class="ribbon6">
+      <h3>ようこそ、one on golfへ！</h3>
+    </div>
        
       <p class= "text-white" "top-font">
-      
-       このサイトは、ゴルフプレーヤーのサイトになります。<br>
-       会員でないかたは会員登録を行いましょう<br>
-       サイトを使用するにはには会員登録が必要になります。
+        このサイトは、ゴルフプレーヤーのサイトになります。<br>
+        投稿やフォローをして知り合いを増やしましょう！<br>
+        会員でないかたは会員登録を行いましょう<br>
+        サイトを使用するにはには会員登録が必要になります。
       </p>
 
-
-
-
-　　　<table>
-　　　<tr>
-　　　  <th class= "text-white">
-　　　登録済の方はこちらから
-      <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-success" %>
-      </th>
-      </tr>
-      <th>                  </th>
-      <tr>
-      </tr>
-     <tr>
-     <th class= "text-white">
-      登録をしてない方はこちらから
-      <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-success" %>
-      </th>
-      </tr>
-      </table>
-</div>
+    　   <table>
+　　　    <tr>
+　　　      <th class= "text-white">
+　　　        登録済の方はこちらから
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-success" %>
+            </th>
+          </tr>
+      
+          <tr>
+          </tr>
+    
+          <tr>
+            <th class= "text-white">
+              登録をしてない方はこちらから
+              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-success" %>
+            </th>
+          </tr>
+        </table>
+  </div>
 </div>

@@ -1,21 +1,16 @@
 <div class="follow-background" >
-<div class="main-container col-3 pt-5 offset-4">
-  <div class="box font_test">
-いいね一覧<タイトル>
-　<table class="table font_test">
-
+  <div class="main-container col-3 pt-5 offset-4">
+    <div class="box font_test">
+      いいね一覧<タイトル>
+  　<table class="table font_test">
       <% @favorite_posts.each do |post|%>
-    <tr>
-       <th>
-        <%=post.title %>
-        </th>
-
-
-         <% end %>
-    </tr>
-
-
-  </table>
-</div>
-</div>
+        <tr>
+          <th>
+            <%=post.title %>
+          </th>
+            <% end %>
+        </tr>
+    </table>
+    </div>
+  </div>
 </div>

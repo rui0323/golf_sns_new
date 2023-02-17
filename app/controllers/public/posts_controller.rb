@@ -19,11 +19,9 @@ class Public::PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc).page(params[:page])
     @customer = current_customer
     @post = Post.new
-
   end
 
   def show
-
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.all.page(params[:page]).per(5)

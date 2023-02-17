@@ -1,10 +1,9 @@
-<div class="container mt-5 mb-5">
-<table>
+<div class="container col-8 mt-5 mb-4">
+  <table  class="table  table-hove font_test">
     <thead>
         <tr>
-            <th><h3>投稿者名</h3></th>
-            <th></th>
-            <th><h3>タイトル</h3></th>
+            <th><h4>投稿者名</h4></th>
+            <th><h4>タイトル</h4></th>
             <th></th>
             <th></th>
         </tr>
@@ -13,16 +12,14 @@
     <tbody id="post">
       <% posts.each do |post| %>
         <tr>
-          <th><h3><%= post.customer.name %></h3></th>
-          <th></th>
-          <th><h3><%= post.title %></h3></th>
-          <th><h3><%= link_to "詳細", post_path(post) %></h3></th>
+          <th><h4><%= post.customer.name %></h4></th>
+          <th><h4><%= post.title %></h4></th>
+          <th><h4><%= link_to "詳細", post_path(post) %></h4></th>
           <% if post.customer == current_customer %>
           <% else %>
-       
-        <% end %>
-      </tr>
-    <% end %>
+          <% end %>
+        </tr>
+      <% end %>
     </tbody>
-</table>
+  </table>
 </div>

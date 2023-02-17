@@ -4,14 +4,10 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.page(params[:page]).per(7)
-
-
-
-
   end
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page])
     @customer = current_customer
   end
 
