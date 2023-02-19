@@ -1,11 +1,11 @@
 class Admin::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts
+    @posts = @customer.posts.page(params[:page]).per(7)
   end
 
   def index
-      @customers = Customer.all
+      @customers = Customer.all.page(params[:page])
       #@customer = Customer.find(params[:id])
   end
 

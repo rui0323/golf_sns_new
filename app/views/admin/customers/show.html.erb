@@ -1,101 +1,98 @@
-
-
 <div class="container">
   <div class="row">
     <div class="col-4 mt-5 pt-5 ">
       <h2>	<%= @customer.name %>詳細画面
+        <%= link_to "利用停止",admin_withdraw_path(@customer), method: :patch,class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+      </h2>
+        <div>
+          <table class="table table-hover table-dark">
+            <tr>
+		            <th  style="word-break: keep-all";>氏名</th>
+		            <td>
+		              <% if @customer.is_deleted == false %>
+					             <%= @customer.name %>
+					           <% else %>
+				  	           退会済み
+                <% end %>
+		            </td>
+            </tr>
 
-      <%= link_to "利用停止",admin_withdraw_path(@customer), method: :patch,class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
-  </h2>
-      <div>
-      <table class="table table-hover table-dark">
-       <tr>
-		     <td>氏名</td>
-		     <td>
-		       <% if @customer.is_deleted == false %>
-					        <%= @customer.name %>
-					      <% else %>
-				  	      退会済み
-            <% end %>
-		     </td>
-       </tr>
+            <tr>
+              <th  style="word-break: keep-all";>メールアドレス</th>
+              <td><%= @customer.email %></td>
+            </tr>
 
-      <tr>
-       <td>メールアドレス</td>
-       <td><%= @customer.email %></td>
-      </tr>
+            <tr>
+              <th  style="word-break: keep-all";>自己紹介</th>
+              <td><%= @customer.body %></td>
+            </tr>
 
-       <tr>
-          <td>自己紹介</td>
-          <td><%= @customer.body %></td>
-         </tr>
+            <tr>
+             <th  style="word-break: keep-all";>アイコン</th>
+             <td>
+               <% if @customer.image.attached? %>
+                 <%= image_tag @customer.image, size: "100x100" %>
+               <% else %>
+                 <%= image_tag 'no_image', size: "100x100" %>
+               <% end %>
+             </td>
+            </tr>
 
-      <tr>
-       <td>アイコン</td>
-      <td><% if @customer.image.attached? %>
-          <%= image_tag @customer.image, size: "100x100" %>
-          <% else %>
-          <%= image_tag 'no_image', size: "100x100" %>
-          <% end %></td>
-      </tr>
+            <tr>
+              <td><%=  "フォロー数" %>:<%= @customer.followings.count %></td>
+              <td><%=  "フォロワー数"%>:<%= @customer.followers.count %></td>
+            </tr>
 
-      <tr>
-          <td><%=  "フォロー数" %>:<%= @customer.followings.count %></td>
-          <td><%=  "フォロワー数"%>:<%= @customer.followers.count %></td>
-      </tr>
-
-       <tr>
-         <th></th>
-          <th><%=link_to"いいね一覧",favorites_customer_path(@customer) %></th>
-       </tr>
-
-     </table>
-     </div>
+            <tr>
+              <th></th>
+              <th><%=link_to"いいね一覧",favorites_customer_path(@customer) %></th>
+            </tr>
+          </table>
+        </div>
       </div>
 
 
-        <div class="col-8 mt-5 pt-5">
-        <h2>投稿一覧</h2>
-      <table class="table table-hover table-dark">
+      <div class="col-8 mt-5 pt-5">
+        <h2 class="text-center">投稿一覧</h2>
+          <table class="table table-hover table-dark">
+            <tbody>
+              <% @posts.each do |post| %>
+            <tr>
+              <th>
+                <%= link_to  post.customer.name,admin_customer_path(post.customer.id) %></th>
+              <th>
+                <% if post.image.attached? %>
+                  <%= image_tag post.image, size: "50x50" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "50x50" %>
+                <% end %>
+              </th>
 
-        <tbody>
-     <% @posts.each do |post| %>
-
-     <tr>
-      <th>
-     <%= link_to  post.customer.name,admin_customer_path(post.customer.id) %></th>
-
-     <th>
-     <% if post.image.attached? %>
-     <%= image_tag post.image, size: "50x50" %>
-     <% else %>
-     <%= image_tag 'no_image', size: "50x50" %>
-     <% end %></th>
-
-     <th><%= post.title %></th>
-     <th><%= link_to"投稿詳細",admin_post_path(post.id) %></th>
-      <th><%= "#{post.post_comments.count} コメント" %></th>
-     <th>
-        <% if post.favorited_by?(post.customer) %>
-        <p>
-        <%#= link_to post_favorites_path(post), method: :delete do %>
-        ♥<%= post.favorites.count %> いいね
-        <%# end %>
-        </p>
-        <% else %>
-        <p>
-        <%#= link_to post_favorites_path(post), method: :post do %>
-        ♡<%= post.favorites.count %> いいね
-        <%# end %>
-       </p>
-        <% end %>
-      </th>
-     </tr>
-     <% end %>
-    </tbody>
+              <th><%= post.title %></th>
+              <th><%= link_to"投稿詳細",admin_post_path(post.id) %></th>
+              <th><%= "#{post.post_comments.count} コメント" %></th>
+              <th>
+                <% if post.favorited_by?(post.customer) %>
+                <p>
+                <%#= link_to post_favorites_path(post), method: :delete do %>
+                ♥<%= post.favorites.count %> いいね
+                 <%# end %>
+                </p>
+                <% else %>
+                <p>
+                <%#= link_to post_favorites_path(post), method: :post do %>
+                ♡<%= post.favorites.count %> いいね
+                <%# end %>
+                </p>
+                <% end %>
+              </th>
+            </tr>
+              <% end %>
+            </tbody>
              <%#= render "follow_post" %>
-         </table>
-   </div>
+          </table>
+         <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+    </div>
   </div>
- </div>
+</div>
 

@@ -2,7 +2,7 @@
   <div class="container  pt-5 px-sm-8">
     <div class="box font_test">
       <div class="row">
-     　　<div class="col-5">
+     　　<div class="col-6">
 　　　    <h2 class="text-center">投稿詳細画面</h2>
 　　　      <p><% if @post.customer == current_customer %>
                <%= link_to "編集", edit_post_path(@post.id), class:  "btn-gradient-simple col-4 mx-auto text-center" %>
@@ -61,7 +61,7 @@
                 </table>
               </div>
 
-              <div class="col-6 ">
+              <div class="col-5 ">
                 <table class="table table-borderless">
                  <tr>
                    <th id="favorite_buttons_<%= @post.id %>">
