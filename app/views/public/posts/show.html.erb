@@ -2,9 +2,9 @@
   <div class="container  pt-5 px-sm-8">
     <div class="box font_test">
       <div class="row">
-     　　<div class="col-6">
-　　　    <h2 class="text-center">投稿詳細画面</h2>
-　　　      <p><% if @post.customer == current_customer %>
+         <div class="col-6">
+          <h2 class="text-center">投稿詳細画面</h2>
+            <p><% if @post.customer == current_customer %>
                <%= link_to "編集", edit_post_path(@post.id), class:  "btn-gradient-simple col-4 mx-auto text-center" %>
                <%= link_to "削除", post_path(@post.id), class:  "btn-gradient-simple col-4 offset-3 text-center", method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
                <% else %>
@@ -14,58 +14,59 @@
                <table class="table table-borderless font_test">
                  <tr>
                    <th style="word-break: keep-all";>投稿者</th>
-		             <td>
-		               <% if @customer.is_deleted == false %>
-		               <%= link_to @customer.name,customer_path(@customer.id) %>
-		               <% else %>
-		               退会済みユーザー
-                       <% end %>
-		             </td>
-                   </tr>
-
-                   <tr>
-     　             　<th style="word-break: keep-all";>タイトル</th>
-     　               <td><%= @post.title %></td>
-                   </tr>
-
-                   <tr>
-    　                <th style="word-break: keep-all";>本文</th>
-    　　            　 <td><%= @post.caption %></td>
-                   </tr>
-
-                   <tr>
-    　                <th>投稿画像</th>
-    　   　 　        　<td><% if @post.image.attached? %>
-                     <%= image_tag @post.image,class: "rounded-circle", size: "100x100" %>
-                     <% else %>
-                     <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
-                     <% end %></td>
-                   </tr>
-
-　　　　　　　　　　<tr>
-　　　　　　　　　   <th>投稿日</th>
-　　　　　　　　　   <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-　　　　　　　　　　</tr>
-
-                   <tr>
-                     <td></td>
                      <td>
-                     <div>
-                      <%= form_with model: [@post, @post_comment] do |f| %>
-                      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに(最大20文字まで）", :size=>"40x5" %>
-                      <p><%= f.submit "送信する", class: "btn-gradient-simple mx-auto"  %></p>
-                      <% end %>
-                     </div>
+		                   <% if @customer.is_deleted == false %>
+		                     <%= link_to @customer.name,customer_path(@customer.id) %>
+		                   <% else %>
+		                     退会済みユーザー
+                       <% end %>
                      </td>
-                   </tr>
-                </table>
-              </div>
+                 </tr>
 
-              <div class="col-5 ">
+                 <tr>
+                   <th style="word-break: keep-all";>タイトル</th>
+                   <td><%= @post.title %></td>
+                 </tr>
+
+                 <tr>
+                   <th style="word-break: keep-all";>本文</th>
+                   <td><%= @post.caption %></td>
+                 </tr>
+
+                 <tr>
+                   <th>投稿画像</th>
+                   <td><% if @post.image.attached? %>
+                         <%= image_tag @post.image,class: "rounded-circle", size: "100x100" %>
+                       <% else %>
+                         <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
+                       <% end %></td>
+                 </tr>
+
+                 <tr>
+                   <th>投稿日</th>
+                   <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+                 </tr>
+
+                 <tr>
+                   <td></td>
+                   <td>
+                     <div>
+                       <%= form_with model: [@post, @post_comment] do |f| %>
+                       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに(最大20文字まで）", :size=>"40x5" %>
+                       <p><%= f.submit "送信する", class: "btn-gradient-simple mx-auto"  %></p>
+                       <% end %>
+                     </div>
+                   </td>
+                 </tr>
+               </table>
+             </div>
+
+             <div class="col-5 ">
                 <table class="table table-borderless">
                  <tr>
                    <th id="favorite_buttons_<%= @post.id %>">
-                 　  <%= render "public/favorites/favorites", post: @post %>
+                     <%= render "public/favorites/favorites", post: @post %>
+
                    </th>
 
                    <p>コメント件数：<%= @post.post_comments.count %></p>

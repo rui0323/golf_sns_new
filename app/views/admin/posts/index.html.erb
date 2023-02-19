@@ -7,14 +7,15 @@
     　     <th>投稿ユーザー画像</th>
     　     <th>タイトル</th>
         　<th></th>
+        　 <th>投稿日</th>
         </tr>
   　   </thead>
 
   　   <tbody>
         <% @posts.each do |post| %>
-        <tr>
+        <tr  data-href="<%= admin_post_url(post.id) %>">
           <th>
-            <%= link_to  post.customer.name,admin_customer_path(post.customer.id) %></th>
+            <%= post.customer.name %></th>
           <th>
             <% if post.image.attached? %>
               <%= image_tag post.image, size: "50x50" %>
@@ -23,6 +24,7 @@
             <% end %></th>
           <th><%= post.title %></th>
           <th><%= link_to"詳細ページへ",admin_post_path(post.id) %></th>
+           <th><%= post.created_at.strftime('%Y/%m/%d') %></th>
         </tr>
         <% end %>
       </tbody>

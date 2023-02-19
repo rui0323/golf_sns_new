@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+   before_action :ensure_sign_in_admin
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.page(params[:page]).per(7)

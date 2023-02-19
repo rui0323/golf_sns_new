@@ -43,10 +43,7 @@
               <td><%=  "フォロワー数"%>:<%= @customer.followers.count %></td>
             </tr>
 
-            <tr>
-              <th></th>
-              <th><%=link_to"いいね一覧",favorites_customer_path(@customer) %></th>
-            </tr>
+
           </table>
         </div>
       </div>
@@ -57,9 +54,9 @@
           <table class="table table-hover table-dark">
             <tbody>
               <% @posts.each do |post| %>
-            <tr>
+            <tr  data-href="<%= admin_post_url(post.id) %>">
               <th>
-                <%= link_to  post.customer.name,admin_customer_path(post.customer.id) %></th>
+                <%= post.customer.name %></th>
               <th>
                 <% if post.image.attached? %>
                   <%= image_tag post.image, size: "50x50" %>
@@ -86,6 +83,7 @@
                 </p>
                 <% end %>
               </th>
+              <th><%= post.created_at.strftime('%Y/%m/%d') %></th>
             </tr>
               <% end %>
             </tbody>

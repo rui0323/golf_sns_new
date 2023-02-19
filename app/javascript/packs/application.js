@@ -24,3 +24,12 @@ const images = require.context('../images/', true)
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+$(document).on('turbolinks:load', function () {
+  $(document).ready(function () {
+    $('tbody tr[data-href]').click(function () {
+      window.location.href = $(this).attr('data-href')
+    })
+  })
+})

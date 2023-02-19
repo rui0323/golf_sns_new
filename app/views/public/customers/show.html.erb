@@ -22,8 +22,8 @@
             <%= render "public/shared/follow", customer: @customer %>
           </div>
 
-            <table class="table font_test">
-              <tr>
+        <table class="table font_test">
+          <tr>
 		        <th style="word-break: keep-all";>氏名</th>
 			    <td>
 			      <% if @customer.is_deleted == false %>
@@ -35,7 +35,7 @@
               </tr>
 
               <tr>
-                　<% if @customer == current_customer %>
+                  <% if @customer == current_customer %>
                 <th style="word-break: keep-all";>メールアドレス</th>
                 <td><%= @customer.email %></td>
                   <% else %>
@@ -64,8 +64,8 @@
                  </tr>
 
                  <tr>
-                　<td><%=link_to"いいね一覧",favorites_customer_path(@customer) %></td>
-                　<td></td>
+                  <td><%=link_to"いいね一覧",favorites_customer_path(@customer) %></td>
+                  <td></td>
                  </tr>
             </table>
           </div>
@@ -99,10 +99,9 @@
 
                   <th><%= link_to"詳細へ",post_path(post.id) %></th>
                   <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
-                  <th>
-                      <div id="favorite_buttons_<%= post.id %>">
-　　              　  <%= render "public/favorites/favorites",  post: post %>
-　　                　</div>
+                  <th id="favorite_buttons_<%= post.id %>">
+                      <%= render "public/favorites/favorites",  post: post %>
+
                   </th>
                 </tr>
                 <% end %>

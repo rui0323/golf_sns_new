@@ -34,6 +34,7 @@
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
+- レイアウト：bootstrap
 - IDE：Cloud9
 
 ## 使用素材

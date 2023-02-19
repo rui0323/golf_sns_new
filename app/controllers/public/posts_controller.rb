@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+    before_action :ensure_sign_in_customer
 
   def new
     @post = Post.new
@@ -61,4 +62,8 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :image, :caption)
   end
+
+ 
+
+
 end

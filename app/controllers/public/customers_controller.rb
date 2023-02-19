@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-
+    before_action :ensure_sign_in_customer
 
   def show
     @customer = Customer.find(params[:id])

@@ -1,4 +1,6 @@
 class Public::RelationshipsController < ApplicationController
+   before_action :ensure_sign_in_customer
+
   def create
     #current_customer.follow(params[:customer_id])
      @customer = Customer.find(params[:customer_id])
