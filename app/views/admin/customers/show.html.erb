@@ -6,15 +6,22 @@
       </h2>
         <div>
           <table class="table table-hover table-dark">
+
             <tr>
-		            <th  style="word-break: keep-all";>氏名</th>
-		            <td>
-		              <% if @customer.is_deleted == false %>
-					             <%= @customer.name %>
-					           <% else %>
-				  	           退会済み
-                <% end %>
-		            </td>
+              <th  style="word-break: keep-all";>現在</th>
+              <td><% if @customer.is_deleted == false %>
+              入会中
+              <% else %>
+				  	  退会済み
+              <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <th  style="word-break: keep-all";>氏名</th>
+              <td>
+		            <%= @customer.name %>
+		          </td>
             </tr>
 
             <tr>

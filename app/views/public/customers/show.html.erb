@@ -2,7 +2,7 @@
   <div class="container pt-5 px-sm-8">
     <div class="box font_test">
       <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <% if @customer == current_customer %>
             <h2 class="text-center">マイページ</h2>
           <% else %>
@@ -13,7 +13,7 @@
             <% if @customer == current_customer %>
               <%= link_to "編集する", edit_customer_path(@customer), class: "btn-gradient-simple mx-auto my-1" %>&emsp;
               <%= link_to "一覧画面",customers_path, class: "btn-gradient-simple mx-auto my-1" %>&emsp;
-              <%= link_to "退会する",unsubscribe_path, class: "btn-gradient-simple mx-auto" %>&emsp;
+              <%= link_to "退会する",unsubscribe_path, class: "btn-gradient-simple1 mx-auto" %>&emsp;
             <% else %>
               <p></p>
             <% end %>
@@ -23,6 +23,17 @@
           </div>
 
         <table class="table font_test">
+
+           <tr>
+                   <th style="word-break: keep-all";>アイコン</th>
+                   <td><% if @customer.image.attached? %>
+                         <%= image_tag @customer.image,class: "rounded-circle", size: "100x100" %>
+                       <% else %>
+                         <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
+                        <% end %>
+                   </td>
+                  </tr>
+
           <tr>
 		        <th style="word-break: keep-all";>氏名</th>
 			    <td>
@@ -48,15 +59,7 @@
                 <td><%= @customer.body %></td>
             </tr>
 
-                 <tr>
-                   <th style="word-break: keep-all";>アイコン</th>
-                   <td><% if @customer.image.attached? %>
-                         <%= image_tag @customer.image,class: "rounded-circle", size: "100x100" %>
-                       <% else %>
-                         <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
-                        <% end %>
-                   </td>
-                  </tr>
+
 
                  <tr>
                   <td><%= link_to "フォロー数", customer_followings_path(@customer.id) %>:<%= @customer.followings.count %></td>
@@ -71,15 +74,15 @@
           </div>
         </div>
 
-         <div class="col-8">
+         <div class="col-12 col-md-8">
           <h2  class="text-center">投稿一覧</h2>
-           <table class="table  font_test">
+           <table class="table table-hover text-white">
              <tbody>
                <% @posts.each do |post| %>
-                <tr>
+                <tr  class="text-white">
                   <th>
                     <% if post.customer.is_deleted == false %>
-                      <%= link_to  post.customer.name,customer_path(post.customer.id) %>
+                      <%= post.customer.name %>
                     <% else %>
                        退会済み
                     <% end %>
@@ -98,7 +101,7 @@
                   </th>
 
                   <th><%= link_to"詳細へ",post_path(post.id) %></th>
-                  <th><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></th>
+                  <th><%= "#{post.post_comments.count} コメント" %></th>
                   <th id="favorite_buttons_<%= post.id %>">
                       <%= render "public/favorites/favorites",  post: post %>
 

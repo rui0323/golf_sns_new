@@ -1,26 +1,26 @@
 <div class="container  pt-5 px-sm-8">
   <div class="row">
-　  <div class="col-5 ">
-　　  <h2  class="text-center">管理者用投稿詳細画面</h2>
+    <div class="col-5 ">
+       <h2  class="text-center">管理者用投稿詳細画面</h2>
         <table class="table table-borderless  table-hover table-dark">
-　　　　  <tr>
+          <tr>
             <th  style="word-break: keep-all">ユーザー</th>
             <td><%= link_to @customer.name,admin_customer_path(@customer.id) %></td>
           </tr>
 
           <tr>
-     　　   　<th  style="word-break: keep-all">タイトル</th>
-     　      <td><%= @post.title %></td>
+            <th  style="word-break: keep-all">タイトル</th>
+            <td><%= @post.title %></td>
           </tr>
 
           <tr>
-    　       <th  style="word-break: keep-all">本文</th>
-    　　    　 <td><%= @post.caption %></td>
+             <th  style="word-break: keep-all">本文</th>
+             <td><%= @post.caption %></td>
           </tr>
 
           <tr>
-    　       <th  style="word-break: keep-all">投稿画像</th>
-    　     　<td><% if @post.image.attached? %>
+            <th  style="word-break: keep-all">投稿画像</th>
+            <td><% if @post.image.attached? %>
                <%= image_tag @post.image, size: "100x100" %>
                <% else %>
                <%= image_tag 'no_image', size: "100x100" %>
@@ -31,10 +31,8 @@
             <th>投稿日</th>
             <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
-          
         </table>
     </div>
-
 
     <div class="col-6 ">
       <table class="table table-borderless  table-hover table-dark">
@@ -49,8 +47,8 @@
              <% end %>
              <%= post_comment.created_at.strftime('%Y/%m/%d') %>
              <% end %>
-          </tr>
-         </table>
-      </div>
-   </div>
- </div>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

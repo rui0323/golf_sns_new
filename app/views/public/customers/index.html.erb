@@ -1,20 +1,20 @@
 
 <div class="customer-background" >
   <div class="container  pt-5 px-sm-8">
-  　<div class="box">
-    　<table class="table  table-hove font_test">
- 　    　 <h2 class="text-white text-center">ユーザー</h2>
- 　       <thead>
-   　       <tr>
-  　        　<th>アイコン</th>
-           　<th>名前</th>
-           　<th>詳細情報</th>
-           　<th>follow</th>
+    <div class="box">
+      <table class="table  table-hover font_test">
+          <h2 class="text-white text-center">ユーザー</h2>
+          <thead>
+            <tr>
+             <th>アイコン</th>
+             <th>名前</th>
+             <th>詳細情報</th>
+             <th>follow</th>
            </tr>
-       　</thead>
+         </thead>
 
          <tbody>
-　    　 　<% @customers.each do |customer| %>
+           <% @customers.each do |customer| %>
              <tr>
                <th>
                  <% if customer.image.attached? %>
