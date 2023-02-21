@@ -1,15 +1,11 @@
 <div class="main-container col-7 pt-5 offset-5">
-  
-
-<h2>検索結果 "<%= @keyword %>"</h2>
-  <ul>
-    <% @posts.each do |post| %>
-      <li>
-        <%= link_to  post.title,post_path(post.id)  %>
+  <h2>検索結果 "<%= @keyword %>"</h2>
+    <ul>
+      <% @posts.each do |post| %>
+        <li>
+          <%= link_to  post.title,post_path(post.id)  %>
           <%#= image_tag post.image.variant(gravity: :center, resize:"640x640^", crop:"640x640+0+0"), if post.image.attached? %>
-        
-      </li>
-    <% end %>
-  </ul>
-  
-  </div>
+        </li>
+      <% end %>
+    </ul>
+</div>

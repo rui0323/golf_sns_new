@@ -21,56 +21,53 @@
           <div id="follow-<%= @customer.id %>-ajax">
             <%= render "public/shared/follow", customer: @customer %>
           </div>
-
-        <table class="table font_test">
-
-           <tr>
-                   <th style="word-break: keep-all";>アイコン</th>
-                   <td><% if @customer.image.attached? %>
-                         <%= image_tag @customer.image,class: "rounded-circle", size: "100x100" %>
-                       <% else %>
-                         <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
-                        <% end %>
-                   </td>
-                  </tr>
-
-          <tr>
-		        <th style="word-break: keep-all";>氏名</th>
-			    <td>
-			      <% if @customer.is_deleted == false %>
-			        <%= @customer.name %>
-			      <% else %>
-				    退会済み
+ 
+          <table class="table font_test">
+            <tr>
+              <th style="word-break: keep-all";>アイコン</th>
+              <td><% if @customer.image.attached? %>
+                    <%= image_tag @customer.image,class: "rounded-circle", size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
                   <% end %>
-			    </td>
-              </tr>
+              </td>
+            </tr>
 
-              <tr>
-                  <% if @customer == current_customer %>
-                <th style="word-break: keep-all";>メールアドレス</th>
-                <td><%= @customer.email %></td>
+            <tr>
+		          <th style="word-break: keep-all";>氏名</th>
+			        <td>
+			          <% if @customer.is_deleted == false %>
+			            <%= @customer.name %>
+			          <% else %>
+				          退会済み
+                <% end %>
+			        </td>
+            </tr>
+
+            <tr>
+              <% if @customer == current_customer %>
+              <th style="word-break: keep-all";>メールアドレス</th>
+              <td><%= @customer.email %></td>
                   <% else %>
                   <p></p>
-                   <% end %>
-              </tr>
+                  <% end %>
+            </tr>
 
-              <tr>
+            <tr>
                 <th style="word-break: keep-all";>自己紹介</th>
                 <td><%= @customer.body %></td>
             </tr>
 
+            <tr>
+              <td><%= link_to "フォロー数", customer_followings_path(@customer.id) %>:<%= @customer.followings.count %></td>
+              <td><%= link_to "フォロワー数",customer_followers_path(@customer.id)  %>:<%= @customer.followers.count %></td>
+            </tr>
 
-
-                 <tr>
-                  <td><%= link_to "フォロー数", customer_followings_path(@customer.id) %>:<%= @customer.followings.count %></td>
-                  <td><%= link_to "フォロワー数",customer_followers_path(@customer.id)  %>:<%= @customer.followers.count %></td>
-                 </tr>
-
-                 <tr>
-                  <td><%=link_to"いいね一覧",favorites_customer_path(@customer) %></td>
-                  <td></td>
-                 </tr>
-            </table>
+            <tr>
+              <td><%=link_to"いいね一覧",favorites_customer_path(@customer) %></td>
+              <td></td>
+            </tr>
+          </table>
           </div>
         </div>
 
@@ -87,7 +84,6 @@
                        退会済み
                     <% end %>
                   </th>
-
                   <th>
                     <% if post.image.attached? %>
                       <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
@@ -95,7 +91,6 @@
                       <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
                     <% end %>
                   </th>
-
                   <th>
                     <%= post.title %>
                   </th>
@@ -104,7 +99,6 @@
                   <th><%= "#{post.post_comments.count} コメント" %></th>
                   <th id="favorite_buttons_<%= post.id %>">
                       <%= render "public/favorites/favorites",  post: post %>
-
                   </th>
                 </tr>
                 <% end %>

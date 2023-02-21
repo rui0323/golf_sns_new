@@ -2,15 +2,15 @@
   <div class="main-container col-3 pt-5 offset-4">
     <div class="box font_test">
       いいね一覧<タイトル>
-    <table class="table text-center  font_test">
-      <% @favorite_posts.each do |post|%>
-        <tr>
-          <th>
-            <h3><%= link_to post.title,post_path(post.id) %></h3>
-          </th>
+      <table class="table text-center  font_test">
+        <% @favorite_posts.each do |post|%>
+          <tr>
+            <th>
+              <h3><%= link_to post.title,post_path(post.id) %></h3>
+            </th>
             <% end %>
-        </tr>
-    </table>
+          </tr>
+      </table>
     </div>
   </div>
 </div>

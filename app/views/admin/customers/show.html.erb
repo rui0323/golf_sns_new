@@ -35,26 +35,23 @@
             </tr>
 
             <tr>
-             <th  style="word-break: keep-all";>アイコン</th>
-             <td>
+              <th  style="word-break: keep-all";>アイコン</th>
+              <td>
                <% if @customer.image.attached? %>
                  <%= image_tag @customer.image, size: "100x100" %>
                <% else %>
                  <%= image_tag 'no_image', size: "100x100" %>
                <% end %>
-             </td>
+              </td>
             </tr>
 
             <tr>
               <td><%=  "フォロー数" %>:<%= @customer.followings.count %></td>
               <td><%=  "フォロワー数"%>:<%= @customer.followers.count %></td>
             </tr>
-
-
           </table>
         </div>
       </div>
-
 
       <div class="col-8 mt-5 pt-5">
         <h2 class="text-center">投稿一覧</h2>
@@ -71,7 +68,6 @@
                   <%= image_tag 'no_image', size: "50x50" %>
                 <% end %>
               </th>
-
               <th><%= post.title %></th>
               <th><%= link_to"投稿詳細",admin_post_path(post.id) %></th>
               <th><%= "#{post.post_comments.count} コメント" %></th>
@@ -94,10 +90,9 @@
             </tr>
               <% end %>
             </tbody>
-             <%#= render "follow_post" %>
           </table>
          <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
-    </div>
+      </div>
   </div>
 </div>
 

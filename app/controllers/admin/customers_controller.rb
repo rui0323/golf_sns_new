@@ -1,9 +1,8 @@
 class Admin::CustomersController < ApplicationController
-   　#管理者としてログインしてないときはURLから入れない
-   　before_action :ensure_sign_in_admin
+    before_action :ensure_sign_in_admin
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.page(params[:page]).per(7)
+    @posts = @customer.posts.order(created_at: :desc).page(params[:page]).per(7)
   end
 
   def index

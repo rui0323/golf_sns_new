@@ -12,8 +12,6 @@
                <% end %>
 
                <table class="table  font_test">
-
-
                  <tr>
                    <th style="word-break: keep-all";>投稿者</th>
                      <td>
@@ -65,15 +63,11 @@
 
              <div class="col-5 ">
                  
-                   <p id="favorite_buttons_<%= @post.id %>">
-                     <%= render "public/favorites/favorites", post: @post %>
-                  </p>
+                <p id="favorite_buttons_<%= @post.id %>">
+                  <%= render "public/favorites/favorites", post: @post %>
+                </p>
                 
                 <table class="table table-borderless">
-                 
-
-
-
                  <tr>
                    <p>コメント件数：<%= @post.post_comments.count %></p>
                    <% @post_comments.each do |post_comment| %>

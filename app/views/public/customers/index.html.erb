@@ -3,42 +3,42 @@
   <div class="container  pt-5 px-sm-8">
     <div class="box">
       <table class="table  table-hover font_test">
-          <h2 class="text-white text-center">ユーザー</h2>
+        <h2 class="text-white text-center">ユーザー</h2>
           <thead>
             <tr>
-             <th>アイコン</th>
-             <th>名前</th>
-             <th>詳細情報</th>
-             <th>follow</th>
-           </tr>
-         </thead>
+              <th>アイコン</th>
+              <th>名前</th>
+              <th>詳細情報</th>
+              <th>follow</th>
+            </tr>
+          </thead>
 
-         <tbody>
-           <% @customers.each do |customer| %>
-             <tr>
-               <th>
-                 <% if customer.image.attached? %>
-                 <%= image_tag customer.image,class: "rounded-circle", size: "50x50" %>
-                 <% else %>
-                 <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
-                 <% end %>
-               </th>
-               <th>
-                 <% if customer.is_deleted == false %>
-                 <%= customer.name %>
-                 <% else %>
-                 退会済みユーザー
-                 <% end %>
-               </th>
-               <th><%= link_to"詳細ページへ",customer_path(customer.id) %></th>
-               <th id="follow-<%= customer.id %>-ajax">
-                <%= render "public/shared/follow", customer: customer %>
-               </th>
-             </tr>
-           <% end%>
-         </tbody>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <th>
+                  <% if customer.image.attached? %>
+                    <%= image_tag customer.image,class: "rounded-circle", size: "50x50" %>
+                  <% else %>
+                    <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
+                  <% end %>
+                </th>
+                <th>
+                  <% if customer.is_deleted == false %>
+                    <%= customer.name %>
+                  <% else %>
+                    退会済みユーザー
+                  <% end %>
+                </th>
+                <th><%= link_to"詳細ページへ",customer_path(customer.id) %></th>
+                <th id="follow-<%= customer.id %>-ajax">
+                  <%= render "public/shared/follow", customer: customer %>
+                </th>
+              </tr>
+            <% end%>
+          </tbody>
       </table>
-    <%= paginate @customers, theme: 'twitter-bootstrap-4' %>
+      <%= paginate @customers, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>
 </div>

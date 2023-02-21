@@ -29,15 +29,15 @@
                <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
              <% else %>
                <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
-             <% end %></th>
-
+             <% end %>
+            </th>
             <th><%= post.title %></th>
             <th><%= link_to"投稿詳細",post_path(post.id) %></th>
             <th><%= "#{post.post_comments.count} コメント" %></th>
             <th>
-             <div id="favorite_buttons_<%= post.id %>">
-             <%= render "public/favorites/favorites", post: post %>
-             </div>
+              <div id="favorite_buttons_<%= post.id %>">
+                <%= render "public/favorites/favorites", post: post %>
+              </div>
             </th>
             <th> <%= post.created_at.strftime('%Y/%m/%d') %></th>
           </tr>
