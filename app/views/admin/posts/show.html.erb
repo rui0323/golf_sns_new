@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-5 ">
        <h2  class="text-center">管理者用投稿詳細画面</h2>
+       <p><%= link_to "投稿を削除する", admin_post_path(@post.id), class:  "btn-gradient-simple1 col-4  text-center", method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
         <table class="table table-borderless  table-hover table-dark">
           <tr>
             <th  style="word-break: keep-all">ユーザー</th>

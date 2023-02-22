@@ -4,7 +4,7 @@
       <table class="table table-hover">
         <thead class="font_test">
           <tr>
-            <h2  class="font_test text-center">投稿一覧</h2>
+            <h2  class="font_test text-center">投稿</h2>
             <th>投稿者</th>
             <th>投稿画像</th>
             <th>タイトル</th>
@@ -26,7 +26,9 @@
               <% end %>
             <th>
              <% if post.image.attached? %>
-               <%= image_tag post.image, size: "50x50" %>
+              <% post.image.each do |image| %>
+               <%= image_tag image, size: "50x50" %>
+               <% end %>
              <% else %>
                <%= image_tag 'no_image',size: "50x50" %>
              <% end %>

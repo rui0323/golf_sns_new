@@ -17,8 +17,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page])
     @customer = current_customer
+    @posts = Post.where(customer_id: @customer.followings.ids).order(created_at: :desc).page(params[:page])
+
     @post = Post.new
   end
 
@@ -60,10 +61,10 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :caption)
+    params.require(:post).permit(:title, :caption, image: [])
   end
 
- 
+
 
 
 end

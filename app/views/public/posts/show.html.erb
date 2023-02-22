@@ -36,9 +36,12 @@
                  <tr>
                    <th>投稿画像</th>
                    <td><% if @post.image.attached? %>
-                         <%= image_tag @post.image, size: "200x200" %>
+                       <% @post.image.each do |image| %>
+                         <%= image_tag image, size: "200x200" %>
+                       <% end %>
                        <% else %>
                          <%= image_tag 'no_image', size: "200x200" %>
+
                        <% end %></td>
                  </tr>
 

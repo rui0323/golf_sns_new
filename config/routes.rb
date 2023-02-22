@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 namespace :admin do
 resources :customers, only: [:index, :show]
-resources :posts, only: [:index, :show, :edit, :create, :new, :update]
+resources :posts, only: [:index, :show, :edit, :create, :new, :update, :destroy]
 get "customers/:id/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
 patch "customers/:id/withdraw" => "customers#withdraw", as: "withdraw"
 end
