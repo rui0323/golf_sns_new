@@ -36,9 +36,9 @@
                  <tr>
                    <th>投稿画像</th>
                    <td><% if @post.image.attached? %>
-                         <%= image_tag @post.image,class: "rounded-circle", size: "100x100" %>
+                         <%= image_tag @post.image, size: "200x200" %>
                        <% else %>
-                         <%= image_tag 'no_image',class: "rounded-circle", size: "100x100" %>
+                         <%= image_tag 'no_image', size: "200x200" %>
                        <% end %></td>
                  </tr>
 
@@ -62,11 +62,11 @@
              </div>
 
              <div class="col-5 ">
-                 
+
                 <p id="favorite_buttons_<%= @post.id %>">
                   <%= render "public/favorites/favorites", post: @post %>
                 </p>
-                
+
                 <table class="table table-borderless">
                  <tr>
                    <p>コメント件数：<%= @post.post_comments.count %></p>

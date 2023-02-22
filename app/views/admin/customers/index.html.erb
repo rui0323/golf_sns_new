@@ -27,9 +27,9 @@
             <th><%= "フォロワー数"  %>:<%= customer.followers.count %></th>
             <th>
               <% if customer.is_deleted == false %>
-               入会中
+               <p class="text-success">入会中</p>
               <% else %>
-               退会済み
+                 <p class="text-danger">退会済み</p>
               <% end %>
             </th>
           </tr>

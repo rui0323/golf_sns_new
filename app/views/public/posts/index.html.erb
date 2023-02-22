@@ -26,9 +26,9 @@
               <% end %>
             <th>
              <% if post.image.attached? %>
-               <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
+               <%= image_tag post.image, size: "50x50" %>
              <% else %>
-               <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
+               <%= image_tag 'no_image',size: "50x50" %>
              <% end %>
             </th>
             <th><%= post.title %></th>

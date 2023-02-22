@@ -10,10 +10,21 @@
             <tr>
               <th  style="word-break: keep-all";>現在</th>
               <td><% if @customer.is_deleted == false %>
-              入会中
+              <p class="text-success">入会中</p>
               <% else %>
-				  	  退会済み
+				  	  <p class="text-danger">退会済み</p>
               <% end %>
+              </td>
+            </tr>
+            
+             <tr>
+              <th  style="word-break: keep-all";>アイコン</th>
+              <td>
+               <% if @customer.image.attached? %>
+                 <%= image_tag @customer.image, size: "100x100" %>
+               <% else %>
+                 <%= image_tag 'no_image', size: "100x100" %>
+               <% end %>
               </td>
             </tr>
 
@@ -32,17 +43,6 @@
             <tr>
               <th  style="word-break: keep-all";>自己紹介</th>
               <td><%= @customer.body %></td>
-            </tr>
-
-            <tr>
-              <th  style="word-break: keep-all";>アイコン</th>
-              <td>
-               <% if @customer.image.attached? %>
-                 <%= image_tag @customer.image, size: "100x100" %>
-               <% else %>
-                 <%= image_tag 'no_image', size: "100x100" %>
-               <% end %>
-              </td>
             </tr>
 
             <tr>
