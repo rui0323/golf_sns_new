@@ -25,10 +25,10 @@
                 退会済みユーザー
               <% end %>
             <th>
-             <% if post.image.attached? %>
-              <% post.image.each do |image| %>
-               <%= image_tag image, size: "50x50" %>
-               <% end %>
+             <% if post.images.attached? %>
+
+               <%= image_tag post.images.last, size: "50x50" %>
+
              <% else %>
                <%= image_tag 'no_image',size: "50x50" %>
              <% end %>

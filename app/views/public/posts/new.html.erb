@@ -13,8 +13,8 @@
 
         <%= form_with model: @post do |f| %>
           <h5>画像を選択</h5>
-        <%= f.label :image, "画像をアップロード", class: "btn-gradient-simple mx-auto" %>
-        <%= f.file_field :image, multiple: true, accept: "image/*",class: "image_form" %>
+        <%= f.label :images, "画像をアップロード", class: "btn-gradient-simple mx-auto" %>
+        <%= f.file_field :images, multiple: true, accept: "image/*",class: "image_form" %>
           <h5>タイトル</h5>
         <%= f.text_field :title, :size=>"40" %>
           <h5>本文</h5>

@@ -21,7 +21,7 @@
           <div id="follow-<%= @customer.id %>-ajax">
             <%= render "public/shared/follow", customer: @customer %>
           </div>
- 
+
           <table class="table font_test">
             <tr>
               <th style="word-break: keep-all";>アイコン</th>
@@ -85,8 +85,10 @@
                     <% end %>
                   </th>
                   <th>
-                    <% if post.image.attached? %>
-                      <%= image_tag post.image,class: "rounded-circle", size: "50x50" %>
+                    <% if post.images.attached? %>
+
+                      <%= image_tag post.images.last,class: "rounded-circle", size: "50x50" %>
+
                     <% else %>
                       <%= image_tag 'no_image',class: "rounded-circle", size: "50x50" %>
                     <% end %>

@@ -1,16 +1,16 @@
 class Post < ApplicationRecord
-    has_many_attached :image
+    has_many_attached :images
     belongs_to :customer
     has_many :post_comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
 
 
     def get_image
-    if image.attached?
+    if images.attached?
        file_path = Rails.root.join('app/assets/images/no_image.jpg')
-       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+       images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-       image
+       images
     end
 
     def favorited_by?(customer)
@@ -20,7 +20,7 @@ class Post < ApplicationRecord
 
    validates :title, presence: true
    validates :caption, presence: true
-   validates :image, presence: true
+   validates :images, presence: true
 
 
 end
