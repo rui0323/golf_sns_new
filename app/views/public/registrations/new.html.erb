@@ -1,23 +1,22 @@
 <div class="home-background" >
-  <div class="container  col-4 pt-5 offset-4">
-    <div class="box">
-      <div class="row">
-        <div class=" offset-3  text-white">
-          <h2>新規会員登録</h2>
+  <div class="main-container col-4 pt-5 offset-4">
+    <div class="box  text-white">
+        <h2 class="text-white text-center">新規会員登録</h2>
+
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
 
-            <div class="field">
+            <div class="field text-center">
               <%= f.label :name %><br />
               <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
             </div>
 
-            <div class="field">
+            <div class="field text-center">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
 
-            <div class="field">
+            <div class="field text-center">
               <%= f.label :password %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -25,18 +24,16 @@
               <%= f.password_field :password, autocomplete: "new-password" %>
             </div>
 
-            <div class="field">
+            <div class="field text-center">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
             </div>
 
-            <div class="actions">
+            <div class="actions text-center">
               <%= f.submit "新規登録", class: "btn-gradient-simple mx-auto my-1" %>
               <%= render "public/shared/links" %>
             </div>
             <% end %>
-        </div>
-      </div>
     </div>
   </div>
 </div>

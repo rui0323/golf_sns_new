@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.page(params[:page]).per(7)
+    @posts = @customer.posts.order(created_at: :desc).page(params[:page]).per(7)
   end
 
   def index
